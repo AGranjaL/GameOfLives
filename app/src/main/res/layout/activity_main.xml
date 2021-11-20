@@ -30,4 +30,7 @@
         app:srcCompat="@drawable/logo"
         tools:ignore="ImageContrastCheck" />
 
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
