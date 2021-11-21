@@ -21,16 +21,16 @@
                 android:layout_weight="1"
                 android:scaleType="centerInside">
                 <ImageView
-                    android:id="@+id/frontcard1"
+                    android:id="@+id/backcard1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:alpha="0"
-                    app:srcCompat="@drawable/carta1"
+                    app:srcCompat="@drawable/carta2c"
                     />
                 <ImageView
-                    android:id="@+id/backcard1"
+                    android:id="@+id/frontcard1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -39,13 +39,29 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/backcard2"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/backcard" />
+                android:scaleType="centerInside">
+                <ImageView
+                    android:id="@+id/backcard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:alpha="0"
+                    app:srcCompat="@drawable/carta1c"
+                    />
+                <ImageView
+                    android:id="@+id/frontcard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/backcard" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/backcard3"
