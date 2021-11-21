@@ -26,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("Button pressed");
 
                 // Code here executes on main thread after user presses button
-                setContentView(R.layout.activity_second);
+                Intent second_act = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(second_act);
+                //setContentView(R.layout.activity_second);
             }
         });
 

@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     android:orientation = "horizontal"
     android:background="@drawable/backgrounds">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
 
         <LinearLayout
@@ -19,13 +15,29 @@
             android:layout_alignParentTop="true"
             android:orientation = "horizontal">
 
-            <ImageView
-                android:id="@+id/backcard1"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/backcard" />
+                android:scaleType="centerInside">
+                <ImageView
+                    android:id="@+id/frontcard1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:alpha="0"
+                    app:srcCompat="@drawable/carta1"
+                    />
+                <ImageView
+                    android:id="@+id/backcard1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/backcard" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/backcard2"
@@ -164,5 +176,5 @@
 
 
     </LinearLayout>
-</LinearLayout>
+
 </RelativeLayout>
