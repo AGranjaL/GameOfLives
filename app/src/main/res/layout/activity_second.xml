@@ -8,234 +8,342 @@
     android:background="@drawable/backgrounds">
 
 
-        <LinearLayout
-            android:id = "@+id/lay_cards"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:orientation = "horizontal">
+    <LinearLayout
+        android:id="@+id/lay_cards"
+        android:layout_width="match_parent"
+        android:layout_height="209dp"
+        android:layout_below="@+id/toplayout"
+        android:layout_alignParentTop="false"
+        android:orientation="horizontal">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="centerInside">
-                <ImageView
-                    android:id="@+id/backcard1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:alpha="0"
-                    app:srcCompat="@drawable/carta2c"
-                    />
-                <ImageView
-                    android:id="@+id/frontcard1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/backcard" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="centerInside">
-                <ImageView
-                    android:id="@+id/backcard2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:alpha="0"
-                    app:srcCompat="@drawable/carta1c"
-                    />
-                <ImageView
-                    android:id="@+id/frontcard2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/backcard" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="centerInside">
-                <ImageView
-                    android:id="@+id/backcard3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:alpha="0"
-                    app:srcCompat="@drawable/carta1c"
-                    />
-                <ImageView
-                    android:id="@+id/frontcard3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/backcard" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="centerInside">
-                <ImageView
-                    android:id="@+id/backcard4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:alpha="0"
-                    app:srcCompat="@drawable/carta1c"
-                    />
-                <ImageView
-                    android:id="@+id/frontcard4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/backcard" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="centerInside">
-                <ImageView
-                    android:id="@+id/backcard5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:alpha="0"
-                    app:srcCompat="@drawable/carta1c"
-                    />
-                <ImageView
-                    android:id="@+id/frontcard5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/backcard" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside">
 
-
-            <LinearLayout
+            <ImageView
+                android:id="@+id/backcard6"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="250dp"
-                tools:layout_editor_absoluteY="4dp"
-                tools:ignore="MissingConstraints">
-                android:orientation = "vertical">
-
-                <TextView
-                    android:id="@+id/p1score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="12dp"
-                    android:text="@string/p1score"
-                    android:textSize="24dp"
-                    android:textStyle="bold|italic"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/deal_b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/deal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                android:alpha="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_conversion_absoluteHeight="48dp"
-                tools:layout_conversion_absoluteWidth="88dp" />
+                app:srcCompat="@drawable/carta2c" />
 
-            <TextView
-                android:id="@+id/p2score"
+            <ImageView
+                android:id="@+id/frontcard6"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/p2score"
-                android:textSize="24dp"
-                android:textStyle="bold|italic"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-        android:id = "@+id/lay_cards_b"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation = "horizontal">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside">
 
-        <ImageView
-            android:id="@+id/backcard_player1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/backcard" />
+            <ImageView
+                android:id="@+id/backcard7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta1c" />
 
-        <ImageView
-            android:id="@+id/backcard_player2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/backcard" />
+            <ImageView
+                android:id="@+id/frontcard7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
 
-        <ImageView
-            android:id="@+id/backcard_player3"
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/backcard" />
-        <ImageView
-            android:id="@+id/backcard_player4"
+            android:scaleType="centerInside">
+
+            <ImageView
+                android:id="@+id/backcard8"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta1c" />
+
+            <ImageView
+                android:id="@+id/frontcard8"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/backcard" />
-        <ImageView
-            android:id="@+id/backcard_player5"
+            android:scaleType="centerInside">
+
+            <ImageView
+                android:id="@+id/backcard9"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta1c" />
+
+            <ImageView
+                android:id="@+id/frontcard9"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/backcard" />
+            android:scaleType="centerInside">
+
+            <ImageView
+                android:id="@+id/backcard10"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta1c" />
+
+            <ImageView
+                android:id="@+id/frontcard10"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/lay_cards_b"
+        android:layout_width="match_parent"
+        android:layout_height="209dp"
+        android:layout_below="@+id/centerlayout"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside">
+
+            <ImageView
+                android:id="@+id/backcard1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta2c" />
+
+            <ImageView
+                android:id="@+id/frontcard1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside">
+
+            <ImageView
+                android:id="@+id/backcard2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta1c" />
+
+            <ImageView
+                android:id="@+id/frontcard2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside">
+
+            <ImageView
+                android:id="@+id/backcard3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta1c" />
+
+            <ImageView
+                android:id="@+id/frontcard3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside">
+
+            <ImageView
+                android:id="@+id/backcard4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta1c" />
+
+            <ImageView
+                android:id="@+id/frontcard4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside">
+
+            <ImageView
+                android:id="@+id/backcard5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/carta1c" />
+
+            <ImageView
+                android:id="@+id/frontcard5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backcard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/centerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+        android:layout_below="@id/lay_cards"
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/deal_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            android:text="@string/deal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toplayout"
+        android:layout_width="match_parent"
+        android:layout_height="26dp">
+
+        <TextView
+            android:id="@+id/p2score"
+            android:layout_width="113dp"
+            android:layout_height="29dp"
+            android:text="@string/p2score"
+            android:textSize="24dp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomlayout"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_below="@id/lay_cards_b">
+
+        <TextView
+            android:id="@+id/p1score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/p1score"
+            android:textSize="24dp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

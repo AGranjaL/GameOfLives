@@ -18,7 +18,7 @@ public class SecondActivity extends AppCompatActivity {
 
     //private Integer ListImage[] = {R.drawable.carta1};
     private Button button;
-    private int dealed_cards = 5;
+    private int dealed_cards = 10;
     final private LinkedList<ImageView> imagearray_b = new LinkedList<ImageView>();
     final private LinkedList<ImageView> imagearray_f = new LinkedList<ImageView>();
     final private LinkedList<AnimatorSet> anim_back = new LinkedList<AnimatorSet>();
@@ -47,7 +47,7 @@ public class SecondActivity extends AppCompatActivity {
     }
     protected void onStart() {
         super.onStart();
-
+        button.setVisibility(View.VISIBLE);
 
 
     }
