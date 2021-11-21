@@ -18,23 +18,50 @@ public class SecondActivity extends AppCompatActivity {
 
     //private Integer ListImage[] = {R.drawable.carta1};
     private Button button;
+    private int dealed_cards = 2;
     final private LinkedList<ImageView> imagearray_b = new LinkedList<ImageView>();
     final private LinkedList<ImageView> imagearray_f = new LinkedList<ImageView>();
-    private ListIterator list_iter;
+    final private LinkedList<AnimatorSet> anim_back = new LinkedList<AnimatorSet>();
+    final private LinkedList<AnimatorSet> anim_front = new LinkedList<AnimatorSet>();
     private boolean isBack = true;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        Deck deck = new Deck();
         //animator for flipping cards
-        AnimatorSet anim_front = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.front_animator);
-        AnimatorSet anim_back = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.back_animator);
-        AnimatorSet anim_front2 = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.front_animator);
-        AnimatorSet anim_back2 = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.back_animator);
+        addAnimators();
         //button to deal cards
         button  = (Button) findViewById(R.id.deal_b);
+        setImages();
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deck.shuffle();
+                LinkedList<Card> cards = deck.getNcards(2);
+                for(int i = 0; i < dealed_cards; i++) {
+                    setCard(cards.get(i), imagearray_b.get(i));
+                    flipCard(anim_back.get(i), anim_front.get(i), imagearray_b.get(i), imagearray_f.get(i));
+                }
+
+            }
+        });
+    }
+    protected void onStart() {
+        super.onStart();
+
+
+
+    }
+    private void addAnimators(){
+        for (int i = 0; i < dealed_cards; i++){
+            anim_front.add((AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.front_animator));
+            anim_back.add((AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.back_animator));
+        }
+
+    }
+    private void setImages(){
         int resource;
         float scale = getApplicationContext().getResources().getDisplayMetrics().density;
-        for(int i = 1; i < 3; i++) {
+        for (int i = 1; i < dealed_cards+1; i++){
             resource = getResources().getIdentifier("backcard" + i, "id", getPackageName());
             imagearray_b.add((ImageView) findViewById(resource));
             imagearray_b.getLast().setCameraDistance(8000 * scale);
@@ -42,36 +69,16 @@ public class SecondActivity extends AppCompatActivity {
             imagearray_f.add((ImageView) findViewById(resource));
             imagearray_f.getLast().setCameraDistance(8000 * scale);
         }
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Deck deck = new Deck();
-                deck.shuffle();
-                LinkedList<Card> cards = deck.getNcards(2);
-                int resource;
-                for(int i = 0; i < cards.size(); i++) {
-                    resource = getResources().getIdentifier("drawable/carta" + cards.get(i).getValue() + "" + cards.get(i).getSuit(), null, getPackageName());
-                    imagearray_b.get(i).setImageResource(resource);
-                }
-                // Code here executes on main thread after user presses button
-                if (isBack){
-                    anim_back.setTarget(imagearray_b.get(0));
-                    anim_front.setTarget(imagearray_f.get(0));
-                    anim_back.start();
-                    anim_front.start();
-                    anim_back2.setTarget(imagearray_b.get(1));
-                    anim_front2.setTarget(imagearray_f.get(1));
-                    anim_back2.start();
-                    anim_front2.start();
-
-                    isBack = false;
-
-                }
-            }
-        });
     }
-    protected void onStart() {
-        super.onStart();
-
+    private void setCard(Card card, ImageView image){
+        int resource = getResources().getIdentifier("drawable/carta"+ card.getValue()+""+card.getSuit(), null, getPackageName());
+        image.setImageResource(resource);
+    }
+    private void flipCard(AnimatorSet anim_back, AnimatorSet anim_front, ImageView backcard, ImageView frontcard){
+        anim_back.setTarget(backcard);
+        anim_front.setTarget(frontcard);
+        anim_back.start();
+        anim_front.start();
 
 
     }
