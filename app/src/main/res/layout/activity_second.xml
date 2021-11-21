@@ -62,30 +62,75 @@
                     app:srcCompat="@drawable/backcard" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <ImageView
-                android:id="@+id/backcard3"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/backcard" />
+                android:scaleType="centerInside">
+                <ImageView
+                    android:id="@+id/backcard3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:alpha="0"
+                    app:srcCompat="@drawable/carta1c"
+                    />
+                <ImageView
+                    android:id="@+id/frontcard3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/backcard" />
 
-            <ImageView
-                android:id="@+id/backcard4"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/backcard" />
-            <ImageView
-                android:id="@+id/backcard5"
+                android:scaleType="centerInside">
+                <ImageView
+                    android:id="@+id/backcard4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:alpha="0"
+                    app:srcCompat="@drawable/carta1c"
+                    />
+                <ImageView
+                    android:id="@+id/frontcard4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/backcard" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/backcard" />
+                android:scaleType="centerInside">
+                <ImageView
+                    android:id="@+id/backcard5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:alpha="0"
+                    app:srcCompat="@drawable/carta1c"
+                    />
+                <ImageView
+                    android:id="@+id/frontcard5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/backcard" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>

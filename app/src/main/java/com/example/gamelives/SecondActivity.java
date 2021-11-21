@@ -18,7 +18,7 @@ public class SecondActivity extends AppCompatActivity {
 
     //private Integer ListImage[] = {R.drawable.carta1};
     private Button button;
-    private int dealed_cards = 2;
+    private int dealed_cards = 5;
     final private LinkedList<ImageView> imagearray_b = new LinkedList<ImageView>();
     final private LinkedList<ImageView> imagearray_f = new LinkedList<ImageView>();
     final private LinkedList<AnimatorSet> anim_back = new LinkedList<AnimatorSet>();
@@ -36,7 +36,7 @@ public class SecondActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 deck.shuffle();
-                LinkedList<Card> cards = deck.getNcards(2);
+                LinkedList<Card> cards = deck.getNcards(dealed_cards);
                 for(int i = 0; i < dealed_cards; i++) {
                     setCard(cards.get(i), imagearray_b.get(i));
                     flipCard(anim_back.get(i), anim_front.get(i), imagearray_b.get(i), imagearray_f.get(i));
