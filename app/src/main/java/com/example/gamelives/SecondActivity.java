@@ -71,7 +71,21 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
     private void setCard(Card card, ImageView image){
-        int resource = getResources().getIdentifier("drawable/carta"+ card.getValue()+""+card.getSuit(), null, getPackageName());
+        int value = card.getValue();
+        char suit = card.getSuit();
+        int resource;
+        if (value == 10){
+            resource = getResources().getIdentifier("drawable/cartas"+suit, null, getPackageName());
+        }
+        else if(value == 11){
+            resource = getResources().getIdentifier("drawable/cartac"+suit, null, getPackageName());
+        }
+        else if (value == 12){
+            resource = getResources().getIdentifier("drawable/cartar"+ suit, null, getPackageName());
+        }
+        else {
+            resource = getResources().getIdentifier("drawable/carta"+ value + "" + suit, null, getPackageName());
+        }
         image.setImageResource(resource);
     }
     private void flipCard(AnimatorSet anim_back, AnimatorSet anim_front, ImageView backcard, ImageView frontcard){
