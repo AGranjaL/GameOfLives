@@ -43,18 +43,20 @@
         tools:ignore="ImageContrastCheck" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="412dp"
+        android:layout_height="638dp"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        tools:layout_editor_absoluteX="-1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/instructions_textView"
-                android:layout_width="223dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="354dp"
                 android:layout_marginStart="105dp"
                 android:layout_marginEnd="105dp"
                 android:layout_marginBottom="100dp"
