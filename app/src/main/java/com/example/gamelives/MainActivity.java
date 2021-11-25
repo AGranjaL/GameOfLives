@@ -40,11 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 // Code here executes on main thread after user presses button
                 Intent second_act = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(second_act);
-                //setContentView(R.layout.activity_second);
+                setContentView(R.layout.activity_second);
             }
         });
-
-
         final Button instructionsButton = findViewById(R.id.button_instructions);
         final TextView instructionsTextView = findViewById(R.id.instructions_textView);
         final CheckBox instructionsCheckBox = findViewById(R.id.checkBox);
@@ -52,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
         instructionsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 System.out.println("InstructionButton pressed");
+                instructionsCheckBox.setVisibility(instructionsCheckBox.VISIBLE);
                 instructionsTextView.setVisibility(instructionsTextView.VISIBLE);
                 instructionsButton.setVisibility(instructionsButton.INVISIBLE);
                 button.setVisibility(button.INVISIBLE);
-
                 /*if (instructionsCheckBox.isChecked());{
                     instructionsTextView.
                 }
@@ -63,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 //    instructionsButton.setVisibility(instructionsButton.VISIBLE);
                   //  instructionsTextView.setVisibility(instructionsTextView.INVISIBLE);
                 }*/
-
-
             }
         });
 
@@ -73,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 instructionsTextView.setVisibility(instructionsTextView.INVISIBLE);
                 button.setVisibility(button.VISIBLE);
+                instructionsButton.setVisibility(instructionsButton.VISIBLE);
+
             }
         });
     }
