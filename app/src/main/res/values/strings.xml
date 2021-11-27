@@ -18,7 +18,8 @@ The objective of the players will be to bet at the beginning of each round the n
 between your bid and the actual number of tricks that you actually win in the game will be the amount of lives you will lose. \n
 \n Game \n
 The game starts when the “hand” player deals 5 cards to each player. Players will then bet on how many tricks they will win in
-that round. The first player to bid will be the player on the left of the “hand” player, and they will continue from them clockwise,
+that round.
+        \n The first player to bid will be the player on the left of the “hand” player, and they will continue from them clockwise,
 so that the last player to bid will be the “hand” player. In this same order, they will make their move. Once each round is over, it’s shuffled again and the process is repeated, dealing one less card to each player in each of the following rounds, until reaching 1 card per player, at which point 5 cards will be dealt again. \n
 </string>
     <string name="ValueAndLives">
@@ -26,7 +27,7 @@ so that the last player to bid will be the “hand” player. In this same order
 Cards are arranged according to their number and regardless of suit. The king is the highest, and the ace, the lowest. The trick winner will be the one who throws the card with the highest value. In case two or more player tie, the trick will be for the one who throws first in the round \n
 \n Lives \n
 Initially, each of the players will have five lives. Every round, players will lose as many lives as the difference between their bid
-and the total number of tricks won, until they lose all their lives.
+and the total number of tricks won, until they lose all their lives. \n
 There are no kind of reward with lives. Players won’t add up lives in any of the rounds neither by winning the bet nor by staying
 alive for a number of rounds.
     </string>

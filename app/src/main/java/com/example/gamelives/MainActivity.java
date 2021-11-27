@@ -1,28 +1,16 @@
 package com.example.gamelives;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.StringDef;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.w3c.dom.Text;
-
-import javax.security.auth.callback.Callback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,32 +32,56 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         final Button instructionsButton = findViewById(R.id.button_instructions);
-        final TextView instructionsTextView = findViewById(R.id.instructions_textView);
+        final Button instr_nextButton = findViewById(R.id.nextButton);
         final CheckBox instructionsCheckBox = findViewById(R.id.checkBox);
+
+        final TextView instr_Overview_TextView = findViewById(R.id.instructions_textView);
+        final TextView instr_Game_TextView = findViewById(R.id.instructions_textView2);
+        final TextView instr_ValuesAndLives_TextView = findViewById(R.id.instr_ValuesAndLives_TextView);
+
+        final ImageView instr_Overview_ImageView = findViewById(R.id.imageViewInstruct2);
+        final ImageView instr_valueAndLives_imageView = findViewById(R.id.instr_valueAndLives_imageView);
 
         instructionsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 System.out.println("InstructionButton pressed");
-                instructionsCheckBox.setVisibility(instructionsCheckBox.VISIBLE);
-                instructionsTextView.setVisibility(instructionsTextView.VISIBLE);
+                instr_Overview_TextView.setVisibility(instr_Overview_TextView.VISIBLE);
+                instr_Overview_ImageView.setVisibility(instr_Overview_ImageView.VISIBLE);
+                instr_Game_TextView.setVisibility(instr_Game_TextView.VISIBLE);
+                instr_nextButton.setVisibility(instr_nextButton.VISIBLE);
+
                 instructionsButton.setVisibility(instructionsButton.INVISIBLE);
                 button.setVisibility(button.INVISIBLE);
-                /*if (instructionsCheckBox.isChecked());{
-                    instructionsTextView.
-                }
-                    //setContentView(R.layout.activity_main);
-                //    instructionsButton.setVisibility(instructionsButton.VISIBLE);
-                  //  instructionsTextView.setVisibility(instructionsTextView.INVISIBLE);
-                }*/
             }
         });
+
+        instr_nextButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("NextButton pressed");
+
+                instr_Overview_TextView.setVisibility(instr_Overview_TextView.INVISIBLE);
+                instr_Game_TextView.setVisibility(instr_Game_TextView.INVISIBLE);
+                instr_Overview_ImageView.setVisibility(instr_Overview_ImageView.INVISIBLE);
+                instr_nextButton.setVisibility(instr_nextButton.INVISIBLE);
+
+                instr_ValuesAndLives_TextView.setVisibility(instr_ValuesAndLives_TextView.VISIBLE);
+                instr_valueAndLives_imageView.setVisibility(instr_valueAndLives_imageView.VISIBLE);
+                instructionsCheckBox.setVisibility(instructionsCheckBox.VISIBLE);
+
+            }
+            });
+
 
         instructionsCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                instructionsTextView.setVisibility(instructionsTextView.INVISIBLE);
+
                 button.setVisibility(button.VISIBLE);
                 instructionsButton.setVisibility(instructionsButton.VISIBLE);
+
+                instr_ValuesAndLives_TextView.setVisibility(instr_ValuesAndLives_TextView.INVISIBLE);
+                instr_valueAndLives_imageView.setVisibility(instr_valueAndLives_imageView.INVISIBLE);
+                instructionsCheckBox.setVisibility(instructionsCheckBox.INVISIBLE);
 
             }
         });
