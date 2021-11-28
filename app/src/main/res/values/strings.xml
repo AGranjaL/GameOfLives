@@ -4,6 +4,8 @@
     <string name="deal">Deal</string>
     <string name="p1score">Player1: 0</string>
     <string name="p2score">Player2: 0</string>
+    <string name="livesauto">5</string>
+    <string name="livesmanual">5</string>
     <string name="instructions">Instructions</string>
     <string name="Overview">
         Overview \n
