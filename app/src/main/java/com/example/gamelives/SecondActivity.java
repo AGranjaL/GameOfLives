@@ -2,23 +2,19 @@ package com.example.gamelives;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.concurrent.TimeUnit;
+;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -44,18 +40,7 @@ public class SecondActivity extends AppCompatActivity {
         manualPlayer = new ManualPlayer("ManualPlayer");
         ia = new AutoPlayer("IA");
         button  = (Button) findViewById(R.id.deal_b);
-        //animator for flipping cards
 
-
-
-        /*ImageView image = imagearray_b.getLast();
-
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                image.setColorFilter(Color.argb(50, 255, 255, 0));
-            }
-        });*/
     }
     @Override
     protected void onStart() {
@@ -69,10 +54,21 @@ public class SecondActivity extends AppCompatActivity {
         super.onResume();
         addAnimators();
         //button to deal cards
-
+        Intent bid_act = new Intent(SecondActivity.this, BidActivity.class);
         setImages();
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                //startActivity(bid_act);
+                //setContentView(R.layout.bid_layout);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("IA bet"+ia.getBid(5));;
+
+                    }
+                }, 2000);
                 deck.shuffle();
                 LinkedList<Card> cards = deck.getNcards(dealed_cards);
                 for(int i = 0; i < dealed_cards; i++) {
@@ -84,7 +80,7 @@ public class SecondActivity extends AppCompatActivity {
                 }
                 ia.setCards(cardsplayerauto);
                 manualPlayer.setCards(cardsplayermanual);
-                Handler handler = new Handler();
+                handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         // Actions to do after 5 seconds
@@ -94,10 +90,29 @@ public class SecondActivity extends AppCompatActivity {
                             if (thrown.toString().equals(imagearray_b.get(i+5).getTag())){
                                 System.out.println("Card found");
                                 imagearray_b.get(i+5).setColorFilter(Color.argb(50, 255, 255, 0));
+
                             }
                         }
                     }
                 }, 3000);
+                handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i = 0; i < 5; i++){
+                            imagearray_b.get(i).setClickable(true);
+                            imagearray_b.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ImageView img = (ImageView) v;
+                                    String tag = (String) img.getTag();
+                                    System.out.println("Manual player chose:"+tag);
+                                    img.setColorFilter(Color.argb(50, 255, 255, 0));
+                                }
+                            });
+                        }
+                    }
+                },3000);
 
             }
 
