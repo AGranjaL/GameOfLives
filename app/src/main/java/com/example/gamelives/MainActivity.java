@@ -10,7 +10,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    //String gameState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

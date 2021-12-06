@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +29,9 @@ public class SecondActivity extends AppCompatActivity {
     final private LinkedList<AnimatorSet> anim_front = new LinkedList<AnimatorSet>();
     final private LinkedList<Card> cardsplayerauto = new LinkedList<Card>();
     final private LinkedList<Card> cardsplayermanual = new LinkedList<Card>();
+    private NumberPicker bid;
     private Deck deck;
+    private int bid_ia, bid_player;
     private ManualPlayer manualPlayer;
     private AutoPlayer ia;
     private boolean isBack = true;
@@ -52,75 +55,82 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        addAnimators();
-        //button to deal cards
-        Intent bid_act = new Intent(SecondActivity.this, BidActivity.class);
-        setImages();
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                //startActivity(bid_act);
-                //setContentView(R.layout.bid_layout);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println("IA bet"+ia.getBid(5));;
-
-                    }
-                }, 2000);
                 deck.shuffle();
-                LinkedList<Card> cards = deck.getNcards(dealed_cards);
-                for(int i = 0; i < dealed_cards; i++) {
-                    setCard(cards.get(i), imagearray_b.get(i));
-                    flipCard(anim_back.get(i), anim_front.get(i), imagearray_b.get(i), imagearray_f.get(i));
-                    if (i < 5) cardsplayermanual.add(cards.get(i));
-                    else cardsplayerauto.add(cards.get(i));
-
-                }
-                ia.setCards(cardsplayerauto);
-                manualPlayer.setCards(cardsplayermanual);
-                handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        // Actions to do after 5 seconds
-                        int selected = 0;
-                        Card thrown = ia.throwCard();
-                        for (int i = 0; i < 5; i++){
-                            if (thrown.toString().equals(imagearray_b.get(i+5).getTag())){
-                                System.out.println("Card found");
-                                imagearray_b.get(i+5).setColorFilter(Color.argb(50, 255, 255, 0));
-
-                            }
-                        }
-                    }
-                }, 3000);
-                handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                findViewById(R.id.bidlayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.gamelayout).setVisibility(View.INVISIBLE);
+                bid = (NumberPicker) findViewById(R.id.bid);
+                Button button_ok = findViewById(R.id.button_ok_bid);
+                button_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void run() {
-                        for (int i = 0; i < 5; i++){
-                            imagearray_b.get(i).setClickable(true);
-                            imagearray_b.get(i).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ImageView img = (ImageView) v;
-                                    String tag = (String) img.getTag();
-                                    System.out.println("Manual player chose:"+tag);
-                                    img.setColorFilter(Color.argb(50, 255, 255, 0));
-                                }
-                            });
+                    public void onClick(View v) {
+
+                        bid_player = manualPlayer.getBid(bid, bid_ia);
+                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                        findViewById(R.id.bidlayout).setVisibility(View.INVISIBLE);
+                        addAnimators();
+                        setImages();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                bid_ia = ia.getBid(5);
+                                System.out.println("IA bet"+bid_ia);
+                            }
+                        }, 2000);
+
+                        LinkedList<Card> cards = deck.getNcards(dealed_cards);
+
+                        for(int i = 0; i < dealed_cards; i++) {
+                            System.out.println("Flipping cards");
+                            setCard(cards.get(i), imagearray_b.get(i));
+                            flipCard(anim_back.get(i), anim_front.get(i), imagearray_b.get(i), imagearray_f.get(i));
+                            if (i < 5) cardsplayermanual.add(cards.get(i));
+                            else cardsplayerauto.add(cards.get(i));
                         }
+                        ia.setCards(cardsplayerauto);
+                        manualPlayer.setCards(cardsplayermanual);
+                        handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                // Actions to do after 5 seconds
+                                int selected = 0;
+                                Card thrown = ia.throwCard();
+                                for (int i = 0; i < 5; i++){
+                                    if (thrown.toString().equals(imagearray_b.get(i+5).getTag())){
+                                        System.out.println("Card found");
+                                        imagearray_b.get(i+5).setColorFilter(Color.argb(50, 255, 255, 0));
+
+                                    }
+                                }
+                            }
+                        }, 3000);
+                        handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                for (int i = 0; i < 5; i++){
+                                    imagearray_b.get(i).setClickable(true);
+                                    imagearray_b.get(i).setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            ImageView img = (ImageView) v;
+                                            String tag = (String) img.getTag();
+                                            System.out.println("Manual player chose:"+tag);
+                                            img.setColorFilter(Color.argb(50, 255, 255, 0));
+                                        }
+                                    });
+                                }
+                            }
+                        },3000);
+
                     }
-                },3000);
 
-            }
-
-        });
-
-        //ImageView selected_v = imagearray_b.get(selected+5);
-        //selected_v.setColorFilter(Color.argb(50, 255, 255, 0));
-
+                });
+                    }
+                });
 
 
 

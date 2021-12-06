@@ -1,5 +1,7 @@
 package com.example.gamelives;
 
+import android.widget.NumberPicker;
+
 import java.util.Scanner;
 
 public class ManualPlayer extends Player{
@@ -41,15 +43,15 @@ public class ManualPlayer extends Player{
             else if(read.charAt(0)=='n') return 0;
         }while(true);
     }
-
-    public int getBid(Scanner sc, int otraBid){
-        System.out.println("[MANUAL] Your cards are: " + this.stringCards());
+//DELETED SCANNER FROM CALL, CALLS BID_LAYOUT
+    public int getBid(NumberPicker numberPicker, int otraBid){
+        //System.out.println("[MANUAL] Your cards are: " + this.stringCards());
         System.out.print("[MANUAL] Introduce your bid: ");
-        int bid = sc.nextInt();
-        while((bid+otraBid)==cards.size() || bid>cards.size()){
-            System.out.println("[MANUAL] Amount of bids cannot be equal to the number of cards");
-            bid = sc.nextInt();
-        }
+        //int bid = sc.nextInt();
+        int bid = numberPicker.getValue();
+        //while((bid+otraBid)==cards.size() || bid>cards.size()){
+        //    System.out.println("[MANUAL] Amount of bids cannot be equal to the number of cards");
+        //}
         System.out.println("[MANUAL] Bid: " + bid);
         return bid;
     }
