@@ -46,7 +46,7 @@ public class ManualPlayer extends Player{
 //DELETED SCANNER FROM CALL, CALLS BID_LAYOUT
     public int getBid(NumberPicker numberPicker, int otraBid){
         //System.out.println("[MANUAL] Your cards are: " + this.stringCards());
-        System.out.print("[MANUAL] Introduce your bid: ");
+        //System.out.print("[MANUAL] Introduce your bid: ");
         //int bid = sc.nextInt();
         int bid = numberPicker.getValue();
         //while((bid+otraBid)==cards.size() || bid>cards.size()){

@@ -1,1 +1,5 @@
 # GameOfLives
+##CHANGES IN LOGIC'S CODE
+<MANUAL-PLAYER:getBid> gets value from NumberPicker
+<CARD> 's', 'c' and 'r' lower case
+<DECK> 's', 'c' and 'r' lower case
