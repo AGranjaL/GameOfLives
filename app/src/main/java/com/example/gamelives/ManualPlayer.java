@@ -1,7 +1,7 @@
 package com.example.gamelives;
 
 import android.widget.NumberPicker;
-
+import android.view.View;
 import java.util.Scanner;
 
 public class ManualPlayer extends Player{
