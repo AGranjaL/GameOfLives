@@ -58,11 +58,11 @@ public class SecondActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                bid = (NumberPicker) findViewById(R.id.bid);
+                Button button_ok = findViewById(R.id.button_ok_bid);
                 deck.shuffle();
                 findViewById(R.id.bidlayout).setVisibility(View.VISIBLE);
                 findViewById(R.id.gamelayout).setVisibility(View.INVISIBLE);
-                bid = (NumberPicker) findViewById(R.id.bid);
-                Button button_ok = findViewById(R.id.button_ok_bid);
                 button_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -82,7 +82,7 @@ public class SecondActivity extends AppCompatActivity {
                         }, 2000);
 
                         LinkedList<Card> cards = deck.getNcards(dealed_cards);
-
+                        //animation flipping cards
                         for(int i = 0; i < dealed_cards; i++) {
                             System.out.println("Flipping cards");
                             setCard(cards.get(i), imagearray_b.get(i));
@@ -120,6 +120,7 @@ public class SecondActivity extends AppCompatActivity {
                                             String tag = (String) img.getTag();
                                             System.out.println("Manual player chose:"+tag);
                                             img.setColorFilter(Color.argb(50, 255, 255, 0));
+                                            v.setClickable(false);
                                         }
                                     });
                                 }
