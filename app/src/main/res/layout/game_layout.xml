@@ -323,8 +323,8 @@
             android:layout_width="113dp"
             android:layout_height="29dp"
             android:text="@string/p2score"
-            android:textSize="24dp"
             android:textColor="@color/white"
+            android:textSize="24dp"
             android:textStyle="bold|italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

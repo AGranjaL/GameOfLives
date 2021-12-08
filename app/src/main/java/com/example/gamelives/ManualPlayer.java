@@ -1,22 +1,26 @@
 package com.example.gamelives;
 
+import android.graphics.Color;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.view.View;
+
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import java.util.Scanner;
 
 public class ManualPlayer extends Player{
-
     public ManualPlayer(String name){
+
         super(name);
     }
 
-    public Card throwCard(Scanner sc, Card otraCarta){
+    public Card throwCard(Card manualCard){
         System.out.println("[MANUAL] Your cards are: " + this.stringCards());
         //if(otraCarta!=null) System.out.println("[MANUAL] Auto player threw " + otraCarta);
-        while(true){
+        /*while(true){
             System.out.println("[MANUAL] Write in capitals the card you want to throw: ");
             String card = sc.nextLine();
             card = card.trim();
@@ -33,7 +37,10 @@ public class ManualPlayer extends Player{
                     System.out.println("[MANUAL] You haven't the card selected.");
                 }else System.out.println("[MANUAL] Wrong selection.");
             }
-        }
+        }*/
+        cards.remove(manualCard);
+        return manualCard;
+
     }
 
     public int getMirrorBid(Card otraCarta){
