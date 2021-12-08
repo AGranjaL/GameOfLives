@@ -1,7 +1,10 @@
 package com.example.gamelives;
 
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.view.View;
+import java.util.Scanner;
+
 import java.util.Scanner;
 
 public class ManualPlayer extends Player{
@@ -33,26 +36,23 @@ public class ManualPlayer extends Player{
         }
     }
 
-    public int getMirrorBid(Scanner sc, Card otraCarta){
+    public int getMirrorBid(Card otraCarta){
         System.out.println("[MANUAL] Other player card is: " +  otraCarta);
-        do{
+        /*do{
             System.out.println("[MANUAL] Do you think you win? (y/n)");
             String read = sc.nextLine();
             read = read.trim();
             if(read.charAt(0)=='y') return 1;
             else if(read.charAt(0)=='n') return 0;
-        }while(true);
+        }while(true);*/
+        return 0;
     }
-//DELETED SCANNER FROM CALL, CALLS BID_LAYOUT
-    public int getBid(NumberPicker numberPicker, int otraBid){
-        //System.out.println("[MANUAL] Your cards are: " + this.stringCards());
-        //System.out.print("[MANUAL] Introduce your bid: ");
+
+    public int getBid(Button button_ok, NumberPicker numberPicker, int otraBid){
+        System.out.println("[MANUAL] Your cards are: " + this.stringCards());
+        System.out.print("[MANUAL] Introduce your bid: ");
         //int bid = sc.nextInt();
         int bid = numberPicker.getValue();
-        //while((bid+otraBid)==cards.size() || bid>cards.size()){
-        //    System.out.println("[MANUAL] Amount of bids cannot be equal to the number of cards");
-        //}
-        System.out.println("[MANUAL] Bid: " + bid);
         return bid;
     }
 }

@@ -14,14 +14,17 @@ import android.widget.NumberPicker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.LinkedList;
+import java.util.concurrent.Semaphore;
 ;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     //private Integer ListImage[] = {R.drawable.carta1};
-    private Button button;
+    private Button button, button_ok;
     private int dealed_cards = 5;
+    private int INIT_LIFES = 5;
+    private final Semaphore go = new Semaphore(1, true);
     final private LinkedList<ImageView> imagearray_b = new LinkedList<ImageView>();
     final private LinkedList<ImageView> imagearray_f = new LinkedList<ImageView>();
     final private LinkedList<AnimatorSet> anim_back = new LinkedList<AnimatorSet>();
@@ -33,7 +36,7 @@ public class SecondActivity extends AppCompatActivity {
     private Game game = new Game();
     private int bid_ia, bid_player;
     private ManualPlayer manualPlayer;
-    private AutoPlayer ia;
+    private AutoPlayer autoPlayer;
     private boolean isBack = true;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -42,9 +45,12 @@ public class SecondActivity extends AppCompatActivity {
         deck = new Deck();
         //manualPlayer = new ManualPlayer("ManualPlayer");
         manualPlayer = game.getManualPlayer();
-        ia = game.getAutoPlayer();
+        autoPlayer = game.getAutoPlayer();
         button  = (Button) findViewById(R.id.deal_b);
-
+        bid = (NumberPicker) findViewById(R.id.bid);
+        button_ok = findViewById(R.id.button_ok_bid);
+        button.setOnClickListener(this::onClick);
+        button_ok.setOnClickListener(this::onClick);
     }
     @Override
     protected void onStart() {
@@ -59,8 +65,6 @@ public class SecondActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                bid = (NumberPicker) findViewById(R.id.bid);
-                Button button_ok = findViewById(R.id.button_ok_bid);
                 deck.shuffle();
                 changeToBid();
                 button_ok.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +78,7 @@ public class SecondActivity extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                bid_ia = ia.getBid(5);
+                                bid_ia = autoPlayer.getBid(5);
                                 System.out.println("IA bet"+bid_ia);
                             }
                         }, 2000);
@@ -82,14 +86,14 @@ public class SecondActivity extends AppCompatActivity {
                         LinkedList<Card> cards = deck.getNcards(2*dealed_cards);
                         //animation flipping cards
                         flipAll(cards);
-                        ia.setCards(cardsplayerauto);
+                        autoPlayer.setCards(cardsplayerauto);
                         manualPlayer.setCards(cardsplayermanual);
                         handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
                                 // Actions to do after 5 seconds
                                 int selected = 0;
-                                Card thrown = ia.throwCard();
+                                Card thrown = autoPlayer.throwCard();
                                 for (int i = 0; i < 5; i++){
                                     if (thrown.toString().equals(imagearray_b.get(i+5).getTag())){
                                         System.out.println("Card found");
@@ -115,6 +119,9 @@ public class SecondActivity extends AppCompatActivity {
 
 
 
+    }
+    protected void onResume2(){
+        super.onResume();
     }
     private void addAnimators(){
         for (int i = 0; i < 2*dealed_cards; i++){
@@ -201,6 +208,186 @@ public class SecondActivity extends AppCompatActivity {
     private void setNotClickable(){
         for (int i = 0; i< dealed_cards; i++){
             imagearray_b.get(i).setClickable(false);
+        }
+    }
+    private void dealClick() {
+        start();
+    }
+
+    private void bidClick() {
+        changeToGame();
+
+    }
+    public void onClick(View v){
+        switch(v.getId()){
+            case R.id.deal_b:
+
+
+                break;
+            case R.id.button_ok_bid:
+                go.notify();
+                break;
+        }
+
+    }
+    public void start(){
+        //Start a game
+        manualPlayer.setLifes(INIT_LIFES);
+        autoPlayer.setLifes(INIT_LIFES);
+        int nCards = 5; //first round with 5 cards
+        while(manualPlayer.isAlive() && autoPlayer.isAlive()){ //El juego sigue mientras los 2 siguen vivos
+            //GAME
+            if(nCards ==1) playMirrorRound();
+            else playRound(nCards);
+            System.out.println("[GAME] Vidas manual: " + manualPlayer.getLifes());
+            System.out.println("[GAME] Vidas auto: " + autoPlayer.getLifes());
+
+            if(nCards==1) nCards = 5;
+            else nCards--;
+
+            game.setManualHand(!game.isManualHand());
+        }
+        System.out.println("---------- GAME FINISHED ----------");
+        System.out.println("   -" + manualPlayer.getName() + " (manual): " + manualPlayer.getLifes() + " lifes.");
+        System.out.println("   -" + autoPlayer.getName() + " (auto): " + autoPlayer.getLifes() + " lifes.");
+        System.out.println("----------------------------------");
+        if(manualPlayer.isAlive()) System.out.println(manualPlayer.getName() + " is the WINNER!!!!");
+        else if(autoPlayer.isAlive()) System.out.println(autoPlayer.getName() + " is the WINNER!!!!");
+        else System.out.println("Oh no! Both players have died"); //SEE IF WE COULD PLAY A MIRROR ROUND TO TIEBRAKE
+        System.out.println("----------------------------------");
+    }
+
+    public void playRound(int nCards){
+        //REPARTIR
+        Deck mazo = new Deck();
+        mazo.shuffle();
+        LinkedList<Card> manualCards = mazo.getNcards(nCards);
+        manualPlayer.setCards(manualCards);
+        LinkedList<Card> autoCards = mazo.getNcards(nCards);
+        autoPlayer.setCards(autoCards);
+        bid.setMaxValue(nCards);
+        bid.setMinValue(0);
+
+        //GET BIDS
+        int manualBid, autoBid;
+
+        if(!game.isManualHand()){
+            changeToBid();
+            bid.setOnScrollListener(new NumberPicker.OnScrollListener() {
+                @Override
+                public void onScrollStateChange(NumberPicker view, int scrollState) {
+                    int bid_v = bid.getValue();
+                    if(bid_v > manualCards.size()){
+                        button_ok.setClickable(false);
+                    }
+                    else{
+                        button_ok.setClickable(true);
+                    }
+                }
+            });
+            try {
+                go.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            manualBid = manualPlayer.getBid(button_ok,bid,-1);
+            autoBid = autoPlayer.getBid(manualBid);
+            changeToGame();
+        }else{
+            autoBid = autoPlayer.getBid(-1);
+            if(autoBid == nCards) button_ok.setClickable(false);
+            changeToBid();
+            bid.setOnScrollListener(new NumberPicker.OnScrollListener() {
+                @Override
+                public void onScrollStateChange(NumberPicker view, int scrollState) {
+                    int bid_v = bid.getValue();
+                    if((bid_v+autoBid) == manualCards.size() || bid_v > manualCards.size()){
+                        button_ok.setClickable(false);
+                    }
+                    else{
+                        button_ok.setClickable(true);
+                    }
+                }
+            });
+            try {
+                go.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            manualBid = manualPlayer.getBid(button_ok,bid, autoBid);
+            changeToGame();
+        }
+
+        int manualBazas = 0;
+        int autoBazas = 0;
+        boolean startsManual = !game.isManualHand();
+        for(int i=0;i<nCards; i++){
+            boolean ganaBazaAuto = false;
+            if(startsManual){
+                Card manualCard = manualPlayer.throwCard(input, null);
+                Card autoCard = autoPlayer.throwCard(0);
+                if(manualCard.getValue() >= autoCard.getValue()) ganaBazaAuto = false;
+                else{
+                    ganaBazaAuto = true;
+                    startsManual = false;
+                }
+            }else{ //auto-player is hand player
+                Card autoCard = autoPlayer.throwCard(1);
+                Card manualCard = manualPlayer.throwCard(input, autoCard);
+                if(autoCard.getValue()>= manualCard.getValue()) ganaBazaAuto = true;
+                else{
+                    ganaBazaAuto = false;
+                    startsManual = true;
+                }
+            }
+            if(ganaBazaAuto){
+                autoBazas++;
+                autoPlayer.setResult(1); //inform autoPlayer result for rewarding
+            }else{
+                manualBazas++;
+                autoPlayer.setResult(0);
+            }
+            System.out.println("[GAME] Bazas manual Player = " + manualBazas);
+            System.out.println("[GAME] Bazas auto Player = " + autoBazas);
+        }
+
+        int manualLifesLost = manualBid - manualBazas;
+        if(manualLifesLost < 0) manualLifesLost = manualLifesLost * (-1);
+        int autoLifesLost = autoBid - autoBazas;
+        if(autoLifesLost < 0) autoLifesLost = autoLifesLost * (-1);
+        //if(autoLifesLost==0) autoPlayer.setGlobalResult(1);
+        //else autoPlayer.setGlobalResult(0);
+        autoPlayer.setGlobalResult(autoLifesLost);
+
+        System.out.println("MANUAL PLAYER: Puja = " + manualBid + " | Bazas = " + manualBazas + "  => " + manualLifesLost);
+        System.out.println("AUTO PLAYER: Puja = " + autoBid + " | Bazas = " + autoBazas + "  => " + autoLifesLost);
+
+        manualPlayer.updateLifes(manualLifesLost);
+        autoPlayer.updateLifes(autoLifesLost);
+    }
+    public void playMirrorRound(){
+        Deck mazo = new Deck();
+        mazo.shuffle();
+        Card manualCard = mazo.getNcards(1).getFirst();
+        Card autoCard = mazo.getNcards(1).getFirst();
+        System.out.println("[GAME] Mirror Round cards: manual=" + manualCard + " auto=" + autoCard);
+
+        //Get mirror bid
+        //In this case, as the addition of both bids cannot be 1, the player who is not hand has no decision
+        if(game.isManualHand()){
+            int manualBid = manualPlayer.getMirrorBid(autoCard);
+            System.out.println("[GAME-MirrorRound] Both bid " + manualBid);
+            boolean ganaManual = (manualCard.getValue() >= autoCard.getValue());
+            if(manualBid==1 && ganaManual) autoPlayer.updateLifes(1); //pierde auto
+            else manualPlayer.updateLifes(1); //pierde manual
+            game.setManualHand(false);
+            return;
+        }else{
+            int autoBid = autoPlayer.getMirrorBid(manualCard);
+            System.out.println("[GAME-MirrorRound] Both bid " + autoBid);
+            boolean ganaAuto = (autoCard.getValue() >= manualCard.getValue());
+            if(autoBid==1 && ganaAuto) manualPlayer.updateLifes(1);
+            else autoPlayer.updateLifes(1);
         }
     }
 
