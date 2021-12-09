@@ -323,8 +323,8 @@
             android:layout_width="113dp"
             android:layout_height="29dp"
             android:text="@string/p2score"
-            android:textSize="24dp"
             android:textColor="@color/white"
+            android:textSize="24dp"
             android:textStyle="bold|italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -349,6 +349,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Bet: XX ComputerBet: XX"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/livesauto"
+            app:layout_constraintStart_toEndOf="@+id/p2score"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
