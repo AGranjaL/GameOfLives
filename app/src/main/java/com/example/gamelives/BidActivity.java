@@ -26,7 +26,7 @@ public class BidActivity extends AppCompatActivity {
     NumberPicker.OnValueChangeListener onValueChangeListener = new NumberPicker.OnValueChangeListener() {
         @Override
         public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-            Toast.makeText(BidActivity.this, "selected number" +bid.getValue(), Toast.LENGTH_SHORT);
+            Toast.makeText(BidActivity.this, "selected number" +numberPicker.getValue(), Toast.LENGTH_SHORT);
         }
     };
 /*
