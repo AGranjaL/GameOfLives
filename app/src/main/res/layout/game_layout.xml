@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card6">
 
             <ImageView
                 android:id="@+id/backcard6"
@@ -48,7 +49,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card7">
 
             <ImageView
                 android:id="@+id/backcard7"
@@ -74,7 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card8">
 
             <ImageView
                 android:id="@+id/backcard8"
@@ -100,7 +103,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card9">
 
             <ImageView
                 android:id="@+id/backcard9"
@@ -126,7 +130,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card10">
 
             <ImageView
                 android:id="@+id/backcard10"
@@ -164,7 +169,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card1">
 
             <ImageView
                 android:id="@+id/backcard1"
@@ -190,7 +196,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card2">
 
             <ImageView
                 android:id="@+id/backcard2"
@@ -216,7 +223,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card3">
 
             <ImageView
                 android:id="@+id/backcard3"
@@ -242,7 +250,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card4">
 
             <ImageView
                 android:id="@+id/backcard4"
@@ -268,7 +277,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside">
+            android:scaleType="centerInside"
+            android:id="@+id/card5">
 
             <ImageView
                 android:id="@+id/backcard5"
