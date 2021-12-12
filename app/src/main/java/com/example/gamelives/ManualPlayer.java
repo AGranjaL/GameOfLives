@@ -38,7 +38,9 @@ public class ManualPlayer extends Player{
                 }else System.out.println("[MANUAL] Wrong selection.");
             }
         }*/
-        cards.remove(manualCard);
+        for(int i = 0; i < cards.size(); i++){
+            if(manualCard.toString().equals(cards.get(i).toString())) cards.remove(i);
+        }
         return manualCard;
 
     }
