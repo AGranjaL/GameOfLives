@@ -445,10 +445,17 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         bid.setMinValue(0);
         addAnimators();
         setImages();
+        int resource;
+        for (int i = 0; i<nCards; i++){
+            resource = getResources().getIdentifier("bfrontcard"+(i+1), "id", getPackageName());
+            setCard(manualCards.get(i), findViewById(resource));
+        }
+
         startsManual = !game.isManualHand();
         //GET BIDS
 
         if(!game.isManualHand()){
+
             changeToBid();
             bid.setOnScrollListener((view, scrollState) -> {
                 int bid_v = bid.getValue();
