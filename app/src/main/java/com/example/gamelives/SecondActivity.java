@@ -190,7 +190,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             resource = getResources().getIdentifier("card" + (i + 6), "id", getPackageName());
             findViewById(resource).setVisibility(View.VISIBLE);
             resource = getResources().getIdentifier("backcard"+(i + 6), "id", getPackageName());
-            flipCard(anim_back.get(i+5), anim_front.get(i+5), imagearray_f.get(i+5), findViewById(resource));
+            flipCard(anim_back.get(i+5), anim_front.get(i+5), imagearray_f.get(i+nCards+1), findViewById(resource));
         }
         cardsOnTable = nCards;
 
@@ -290,7 +290,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                     updateBazasView();
 
                     //END OF ROUND
-                    if (cardsOnTable == 1){
+                    if (cardsOnTable == 1  && manualPlayer.isAlive() && autoPlayer.isAlive()){
                         int manualLifesLost = manualBid - manualBazas;
                         if(manualLifesLost < 0) manualLifesLost = manualLifesLost * (-1);
                         int autoLifesLost = autoBid - autoBazas;
@@ -326,7 +326,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         flipAllBack();
                         playRound();
 
-                    }else{
+                    }else if (cardsOnTable > 1  && manualPlayer.isAlive() && autoPlayer.isAlive()){
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             @Override
@@ -338,7 +338,17 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                             }
                         }, 2000);
 
+                    }else{
+                        System.out.println("---------- GAME FINISHED ----------");
+                        System.out.println("   -" + manualPlayer.getName() + " (manual): " + manualPlayer.getLifes() + " lifes.");
+                        System.out.println("   -" + autoPlayer.getName() + " (auto): " + autoPlayer.getLifes() + " lifes.");
+                        System.out.println("----------------------------------");
+                        if(manualPlayer.isAlive()) System.out.println(manualPlayer.getName() + " is the WINNER!!!!");
+                        else if(autoPlayer.isAlive()) System.out.println(autoPlayer.getName() + " is the WINNER!!!!");
+                        else System.out.println("Oh no! Both players have died"); //SEE IF WE COULD PLAY A MIRROR ROUND TO TIEBRAKE
+                        System.out.println("----------------------------------");
                     }
+
                     /*
                     System.out.println("---------- GAME FINISHED ----------");
                     System.out.println("   -" + manualPlayer.getName() + " (manual): " + manualPlayer.getLifes() + " lifes.");
@@ -446,6 +456,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         addAnimators();
         setImages();
         int resource;
+
+        if(nCards < 5) {
+            resource = getResources().getIdentifier("bcard"+(nCards+1), "id", getPackageName());
+            findViewById(resource).setVisibility(View.GONE);
+        }
         for (int i = 0; i<nCards; i++){
             resource = getResources().getIdentifier("bfrontcard"+(i+1), "id", getPackageName());
             setCard(manualCards.get(i), findViewById(resource));
