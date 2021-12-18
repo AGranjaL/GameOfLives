@@ -214,6 +214,18 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         autoLives.setText(""+autoPlayer.getLifes());
         manualLives.setText(""+manualPlayer.getLifes());
     }
+    private void updateBidLayout(){
+        int resource;
+
+        if(nCards < 5) {
+            resource = getResources().getIdentifier("bcard"+(nCards+1), "id", getPackageName());
+            findViewById(resource).setVisibility(View.GONE);
+        }
+        for (int i = 0; i<nCards; i++){
+            resource = getResources().getIdentifier("bfrontcard"+(i+1), "id", getPackageName());
+            setCard(manualCards.get(i), findViewById(resource));
+        }
+    }
     private void removeCardsView(){
         int resource;
 
@@ -403,12 +415,14 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         if(!game.isManualHand()){
             manualBid = manualPlayer.getBid(button_ok,bid,-1);
             autoBid = autoPlayer.getBid(manualBid);
-            changeToGame();
         }else{
             manualBid = manualPlayer.getBid(button_ok,bid, autoBid);
-            changeToGame();
+
 
         }
+        ((TextView)findViewById(R.id.bidAuto)).setText("AutoPlayer bid: "+ autoBid);
+        ((TextView)findViewById(R.id.bidManual)).setText("AutoPlayer bid: "+ manualBid);
+        changeToGame();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -455,16 +469,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         bid.setMinValue(0);
         addAnimators();
         setImages();
-        int resource;
-
-        if(nCards < 5) {
-            resource = getResources().getIdentifier("bcard"+(nCards+1), "id", getPackageName());
-            findViewById(resource).setVisibility(View.GONE);
-        }
-        for (int i = 0; i<nCards; i++){
-            resource = getResources().getIdentifier("bfrontcard"+(i+1), "id", getPackageName());
-            setCard(manualCards.get(i), findViewById(resource));
-        }
+        updateBidLayout();
 
         startsManual = !game.isManualHand();
         //GET BIDS
