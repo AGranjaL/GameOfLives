@@ -2,6 +2,7 @@ package com.example.gamelives;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,10 @@ import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import org.w3c.dom.Text;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -147,6 +152,10 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     //CHANGE FROM LAYOUTS
     private void changeToBid(){
         findViewById(R.id.bidlayout).setVisibility(View.VISIBLE);
+        findViewById(R.id.gamelayout).setVisibility(View.INVISIBLE);
+    }
+    private void changeToRes(){
+        findViewById(R.id.reslayout).setVisibility(View.VISIBLE);
         findViewById(R.id.gamelayout).setVisibility(View.INVISIBLE);
     }
     private void changeToGame(){
@@ -302,7 +311,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                     updateBazasView();
 
                     //END OF ROUND
-                    if (cardsOnTable == 1  && manualPlayer.isAlive() && autoPlayer.isAlive()){
+                    if (cardsOnTable == 1){
                         int manualLifesLost = manualBid - manualBazas;
                         if(manualLifesLost < 0) manualLifesLost = manualLifesLost * (-1);
                         int autoLifesLost = autoBid - autoBazas;
@@ -331,14 +340,39 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         System.out.println("[GAME] Bazas auto Player = " + autoBazas);
                         System.out.println("[GAME] Vidas manual: " + manualPlayer.getLifes());
                         System.out.println("[GAME] Vidas auto: " + autoPlayer.getLifes());
+                        if(autoPlayer.isAlive() && manualPlayer.isAlive()){
+                            if(nCards==1) nCards = 5;
+                            else nCards--;
+                            game.setManualHand(!game.isManualHand());
+                            flipAllBack();
+                            playRound();
 
-                        if(nCards==1) nCards = 5;
-                        else nCards--;
-                        game.setManualHand(!game.isManualHand());
-                        flipAllBack();
-                        playRound();
+                        }
+                        else{
+                            if(manualPlayer.isAlive()){
+                                ((TextView)findViewById(R.id.textResults)).setText(manualPlayer.getLifes() +" is the WINNER!!!!");
 
-                    }else if (cardsOnTable > 1  && manualPlayer.isAlive() && autoPlayer.isAlive()){
+                            }
+                            else if(autoPlayer.isAlive()){
+                                ((TextView)findViewById(R.id.textResults)).setText(autoPlayer.getLifes() +" is the WINNER!!!!");
+
+                            }
+                            else System.out.println("Oh no! Both players have died");
+
+                            changeToRes();
+
+                            System.out.println("---------- GAME FINISHED ----------");
+                            System.out.println("   -" + manualPlayer.getName() + " (manual): " + manualPlayer.getLifes() + " lifes.");
+                            System.out.println("   -" + autoPlayer.getName() + " (auto): " + autoPlayer.getLifes() + " lifes.");
+                            System.out.println("----------------------------------");
+                            if(manualPlayer.isAlive()) System.out.println(manualPlayer.getName() + " is the WINNER!!!!");
+                            else if(autoPlayer.isAlive()) System.out.println(autoPlayer.getName() + " is the WINNER!!!!");
+                            else System.out.println("Oh no! Both players have died"); //SEE IF WE COULD PLAY A MIRROR ROUND TO TIEBRAKE
+                            System.out.println("----------------------------------");
+                        }
+
+
+                    }else{
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             @Override
@@ -350,15 +384,6 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                             }
                         }, 2000);
 
-                    }else{
-                        System.out.println("---------- GAME FINISHED ----------");
-                        System.out.println("   -" + manualPlayer.getName() + " (manual): " + manualPlayer.getLifes() + " lifes.");
-                        System.out.println("   -" + autoPlayer.getName() + " (auto): " + autoPlayer.getLifes() + " lifes.");
-                        System.out.println("----------------------------------");
-                        if(manualPlayer.isAlive()) System.out.println(manualPlayer.getName() + " is the WINNER!!!!");
-                        else if(autoPlayer.isAlive()) System.out.println(autoPlayer.getName() + " is the WINNER!!!!");
-                        else System.out.println("Oh no! Both players have died"); //SEE IF WE COULD PLAY A MIRROR ROUND TO TIEBRAKE
-                        System.out.println("----------------------------------");
                     }
 
                     /*
@@ -458,6 +483,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         //REPARTIR
         manualBazas = 0;
         autoBazas = 0;
+        final Boolean[] notified = {false};
         updateBazasView();
         Deck mazo = new Deck();
         mazo.shuffle();
@@ -498,9 +524,17 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                     int bid_v = bid.getValue();
                     if((bid_v+autoBid) == manualCards.size() || bid_v > manualCards.size()){
                         button_ok.setClickable(false);
+                        if(notified[0] == false){
+                            Snackbar snackbar = Snackbar.make(findViewById(R.id.bidlayout), "Bid not valid", Snackbar.LENGTH_SHORT);
+                            snackbar.show();
+                            notified[0] = true;
+                        }
+
+
                     }
                     else{
                         button_ok.setClickable(true);
+                        notified[0] = false;
                     }
                 }
             });
