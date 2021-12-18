@@ -25,10 +25,10 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private Button button, button_ok;
     private int INIT_LIFES = 5;
     private final Semaphore go = new Semaphore(0, true);
-    final private LinkedList<ImageView> imagearray_b = new LinkedList<>();
-    final private LinkedList<ImageView> imagearray_f = new LinkedList<>();
-    final private LinkedList<AnimatorSet> anim_back = new LinkedList<>();
-    final private LinkedList<AnimatorSet> anim_front = new LinkedList<>();
+    private LinkedList<ImageView> imagearray_b = new LinkedList<>();
+    private LinkedList<ImageView> imagearray_f = new LinkedList<>();
+    private LinkedList<AnimatorSet> anim_back = new LinkedList<>();
+    private LinkedList<AnimatorSet> anim_front = new LinkedList<>();
     private LinkedList<Card> manualCards = new LinkedList<>();
     private LinkedList<Card> autoCards = new LinkedList<>();
     private NumberPicker bid;
@@ -166,25 +166,35 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     }
     private void flipAllBack(){
         int resource;
+        System.out.println("FLIP ALL BACK");
+
         imagearray_b.removeLast().clearColorFilter();
         imagearray_b.removeLast().clearColorFilter();
+
         resource = getResources().getIdentifier("card"+1, "id", getPackageName());
         findViewById(resource).setVisibility(View.GONE);
         resource = getResources().getIdentifier("card"+6, "id", getPackageName());
         findViewById(resource).setVisibility(View.GONE);
+
+        //anim_front = new LinkedList<>();
+        //anim_back = new LinkedList<>();
+        //addAnimators();
+
         for (int i = 0; i < nCards; i++) {
             resource = getResources().getIdentifier("card" + (i + 1), "id", getPackageName());
             findViewById(resource).setVisibility(View.VISIBLE);
             resource = getResources().getIdentifier("backcard"+(i + 1), "id", getPackageName());
-            flipCard(anim_front.get(i), anim_back.get(i), imagearray_f.get(i), findViewById(resource));
+            flipCard(anim_back.get(i), anim_front.get(i), imagearray_f.get(i), findViewById(resource));
         }
         for (int i = 0; i < nCards; i++) {
             resource = getResources().getIdentifier("card" + (i + 6), "id", getPackageName());
             findViewById(resource).setVisibility(View.VISIBLE);
             resource = getResources().getIdentifier("backcard"+(i + 6), "id", getPackageName());
-            flipCard(anim_front.get(i), anim_back.get(i), imagearray_f.get(i), findViewById(resource));
+            flipCard(anim_back.get(i+5), anim_front.get(i+5), imagearray_f.get(i+5), findViewById(resource));
         }
         cardsOnTable = nCards;
+
+        imagearray_f = new LinkedList<>();
 
     }
     private void setNotClickable(){
@@ -389,9 +399,17 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             changeToGame();
 
         }
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                flipAll();
+                playersThrow();
 
-        flipAll();
-        playersThrow();
+            }
+        }, 1000);
+
+
 
 
 
