@@ -525,7 +525,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             changeToBid();
             bid.setOnScrollListener((view, scrollState) -> {
                 int bid_v = bid.getValue();
-                if(bid_v > manualCards.size()){
+                if(bid_v > nCards){
                     button_ok.setClickable(false);
                 }
                 else{
@@ -536,15 +536,15 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
         }else{
             autoBid = autoPlayer.getBid(-1, 1);
+            if((bid.getValue() + autoBid) == nCards ) button_ok.setClickable(false);
             findViewById(R.id.autoplayerBid).setVisibility(View.VISIBLE);
             ((TextView)findViewById(R.id.autoplayerBid)).setText("AutoPlayer bid: "+autoBid);
-            if(autoBid == nCards) button_ok.setClickable(false);
             changeToBid();
             bid.setOnScrollListener(new NumberPicker.OnScrollListener() {
                 @Override
                 public void onScrollStateChange(NumberPicker view, int scrollState) {
                     int bid_v = bid.getValue();
-                    if((bid_v+autoBid) == manualCards.size() || bid_v > manualCards.size()){
+                    if((bid_v+autoBid) == nCards || bid_v > nCards){
                         button_ok.setClickable(false);
                         if(notified[0] == false){
                             Snackbar snackbar = Snackbar.make(findViewById(R.id.bidlayout), "Bid not valid", Snackbar.LENGTH_SHORT);
