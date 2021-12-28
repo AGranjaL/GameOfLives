@@ -402,11 +402,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     }
     private void endOfGame(){
         if(manualPlayer.isAlive()){
-            ((TextView)findViewById(R.id.textResults)).setText(manualPlayer.getLifes() +" is the WINNER!!!!");
+            ((TextView)findViewById(R.id.textResults)).setText(manualPlayer.getName() +" is the WINNER!!!!");
 
         }
         else if(autoPlayer.isAlive()){
-            ((TextView)findViewById(R.id.textResults)).setText(autoPlayer.getLifes() +" is the WINNER!!!!");
+            ((TextView)findViewById(R.id.textResults)).setText(autoPlayer.getName() +" is the WINNER!!!!");
 
         }
         else System.out.println("Oh no! Both players have died");
