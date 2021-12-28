@@ -39,12 +39,12 @@ Initially, each of the players will have five lives. Every round, players will l
 There are no kind of reward with lives. Players won’t add up lives in any of the rounds neither by winning the bet nor by staying alive for a number of rounds.
 
 ### Key issues:
-#### Trick: group of cards thrown by the players in one cycle (one card from each player)
+Trick: group of cards thrown by the players in one cycle (one card from each player)
 
-#### “Hand” player: Before each round, one of the players shuffles the deck and deals the cards. This player is called “hand” player, and will be the last player bidding. In each round, this role rotates clockwise among all the players still alive. “Hand” player will be chosen randomly between all the players.
+“Hand” player: Before each round, one of the players shuffles the deck and deals the cards. This player is called “hand” player, and will be the last player bidding. In each round, this role rotates clockwise among all the players still alive. “Hand” player will be chosen randomly between all the players.
 
-#### Number of lives bet: In every round, the amount of all the bids cannot be the same as the number of tricks played (number of cards each player has at the beginning). “Hand” player has the privilege of knowing all the bids, but with the handicap of having to adapt his bid to this rule.
+Number of lives bet: In every round, the amount of all the bids cannot be the same as the number of tricks played (number of cards each player has at the beginning). “Hand” player has the privilege of knowing all the bids, but with the handicap of having to adapt his bid to this rule.
 
-#### Number of cards: The number of cards dealt by “hand” player is not always the same. In the first round, five cards will be dealt, and each round one will be subtracted until reaching the round with one card per player. After this round, the cycle will be restarted, dealing five cards again (until only one of all the players continues alive).
+Number of cards: The number of cards dealt by “hand” player is not always the same. In the first round, five cards will be dealt, and each round one will be subtracted until reaching the round with one card per player. After this round, the cycle will be restarted, dealing five cards again (until only one of all the players continues alive).
 
-#### Mirror round: The round with one card for each player is called mirror round. In this round, contrary to what happens in the others, every player has to bid knowing their opponents cards, but without knowing theirs.
+Mirror round: The round with one card for each player is called mirror round. In this round, contrary to what happens in the others, every player has to bid knowing their opponents cards, but without knowing theirs.
