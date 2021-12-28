@@ -41,7 +41,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private int manualBid, autoBid, nCards;
     private int cardsOnTable = 5;
     private int autoBazas,manualBazas = 0;
-    private Game game = new Game();
+    private Game game;
     private ManualPlayer manualPlayer;
     private AutoPlayer autoPlayer;
     private Card manualCard;
@@ -280,16 +280,18 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
                     boolean ganaBazaAuto = false;
                     if(startsManual){
-                        autoCard = autoPlayer.throwCard();
+                        autoCard = autoPlayer.throwCard(0, manualCard.getValue());
                         autoPlayerThrows(autoCard);
                         if(manualCard.getValue() >= autoCard.getValue()){
                             ganaBazaAuto = false;
                             manualBazas++;
+                            autoPlayer.setResult(0);
 
                         }
                         else{
                             ganaBazaAuto = true;
                             autoBazas++;
+                            autoPlayer.setResult(1);
                             startsManual = false;
                         }
 
@@ -299,11 +301,13 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         if(autoCard.getValue() >= manualCard.getValue()){
                             ganaBazaAuto = true;
                             autoBazas++;
+                            autoPlayer.setResult(1);
 
                         }
                         else{
                             ganaBazaAuto = false;
                             manualBazas++;
+                            autoPlayer.setResult(0);
                             startsManual = true;
                         }
                     }
@@ -318,7 +322,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         if(autoLifesLost < 0) autoLifesLost = autoLifesLost * (-1);
                         //if(autoLifesLost==0) autoPlayer.setGlobalResult(1);
                         //else autoPlayer.setGlobalResult(0);
-                        //autoPlayer.setGlobalResult(autoLifesLost);
+                        autoPlayer.setGlobalResult(autoLifesLost);
 
 
 
@@ -343,6 +347,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         if(autoPlayer.isAlive() && manualPlayer.isAlive()){
                             if(nCards==1) nCards = 5;
                             else nCards--;
+
                             game.setManualHand(!game.isManualHand());
                             flipAllBack();
                             playRound();
@@ -419,7 +424,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             manualPlayerThrows();
         } else {
             System.out.println("DOESNT STARTS MANUAL!!");
-            autoCard = autoPlayer.throwCard();
+            autoCard = autoPlayer.throwCard(1, 13);
             autoPlayerThrows(autoCard);
             manualPlayerThrows();
         }
@@ -439,7 +444,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     public void click_ok_button(){
         if(!game.isManualHand()){
             manualBid = manualPlayer.getBid(button_ok,bid,-1);
-            autoBid = autoPlayer.getBid(manualBid);
+            autoBid = autoPlayer.getBid(manualBid, 1);
         }else{
             manualBid = manualPlayer.getBid(button_ok,bid, autoBid);
 
@@ -465,6 +470,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     }
     public void start(){
         //Start a game
+        game = new Game(getApplicationContext());
         manualPlayer = game.getManualPlayer();
         autoPlayer = game.getAutoPlayer();
         manualPlayer.setLifes(INIT_LIFES);
@@ -515,7 +521,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
 
         }else{
-            autoBid = autoPlayer.getBid(-1);
+            autoBid = autoPlayer.getBid(-1, 1);
             if(autoBid == nCards) button_ok.setClickable(false);
             changeToBid();
             bid.setOnScrollListener(new NumberPicker.OnScrollListener() {

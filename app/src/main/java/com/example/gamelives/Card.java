@@ -1,4 +1,8 @@
 package com.example.gamelives;
+
+import java.util.Collections;
+import java.util.LinkedList;
+
 public final class Card implements Comparable<Card>{
     private int value; //1, 2, 3, 4, 5, 6, 7, 10, 11, 12
     private char suit; // O, C, E, B
@@ -67,6 +71,17 @@ public final class Card implements Comparable<Card>{
         System.out.println("[ERROR] Error in compareTo (class Card).");
         return 0;
     }
+    public char getDenominacion(){
+        if(value == 10) return 's';
+        else if(value == 11) return 'c';
+        else if(value == 12) return 'r';
+        else return (char)(value + '0');
+    }
+    public static boolean isDenominacion(char c){
+        //Check if a char collected is a correct value
+        if(c=='1' | c=='2' | c=='3' | c=='4' | c=='5' | c=='6' | c=='7' | c=='s' | c=='c' | c=='r') return true;
+        else return false;
+    }
 
     private int gradeSuit(char s){
         //Grades the suits to use in compareTo (sort card)
@@ -79,6 +94,10 @@ public final class Card implements Comparable<Card>{
         }
     }
 
+    public static LinkedList<Card> sortCards(LinkedList<Card> cards) {
+        Collections.sort(cards);
+        return cards;
+    }
 
     //overrride
     public String toString(){

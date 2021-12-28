@@ -1,5 +1,7 @@
 package com.example.gamelives;
 
+import android.content.Context;
+
 import java.util.*;
 
 public class Game{
@@ -11,20 +13,22 @@ public class Game{
     //private Scanner input;
 
     //CONSTRUCTORS
-    public Game(String manualPlayer, String autoPlayer//,Scanner sc
+    public Game(String manualPlayer, String autoPlayer, Context context//,Scanner sc
                  ) {
         this.manualPlayer = new ManualPlayer(manualPlayer);
-        this.autoPlayer = new AutoPlayer(autoPlayer);
+        this.autoPlayer = new AutoPlayer(2);
+        this.autoPlayer.readMaps("../res/raw/mapstrainedmaps", context);
         isManualHand = true; //First hand player is manualPlayer
         //input = sc;
     }
 
-    public Game(
+    public Game( Context context
             //Scanner sc
     ){
         //Default players
         manualPlayer = new ManualPlayer("manualPlayer");
-        autoPlayer = new AutoPlayer("autoPlayer");
+        autoPlayer = new AutoPlayer(2);
+        this.autoPlayer.readMaps("mapstrainedmaps", context);
         isManualHand = true;
     }
 
