@@ -162,6 +162,10 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
         findViewById(R.id.bidlayout).setVisibility(View.INVISIBLE);
     }
+    private void changeToMirror(){
+        findViewById(R.id.mirrorlayout).setVisibility(View.VISIBLE);
+        findViewById(R.id.gamelayout).setVisibility(View.INVISIBLE);
+    }
     //FLIP CARDS
     private void flipAll(){
 
@@ -234,6 +238,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             resource = getResources().getIdentifier("bfrontcard"+(i+1), "id", getPackageName());
             setCard(manualCards.get(i), findViewById(resource));
         }
+    }
+    private void updateMirrorLayout(Card autoCard){
+        int resource;
+        resource = getResources().getIdentifier("mfrontcard", "id", getPackageName());
+        setCard(autoCard, findViewById(resource));
     }
     private void removeCardsView(){
         int resource;
@@ -315,6 +324,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                     updateBazasView();
 
                     //END OF ROUND
+
                     if (cardsOnTable == 1){
                         int manualLifesLost = manualBid - manualBazas;
                         if(manualLifesLost < 0) manualLifesLost = manualLifesLost * (-1);
@@ -333,13 +343,6 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         autoPlayer.updateLifes(autoLifesLost);
                         updateLivesView();
 
-                        /*if(ganaBazaAuto){
-                            autoBazas++;
-                            //autoPlayer.setResult(1); //inform autoPlayer result for rewarding
-                        }else{
-                            manualBazas++;
-                            //autoPlayer.setResult(0);
-                        }*/
                         System.out.println("[GAME] Bazas manual Player = " + manualBazas);
                         System.out.println("[GAME] Bazas auto Player = " + autoBazas);
                         System.out.println("[GAME] Vidas manual: " + manualPlayer.getLifes());
@@ -349,35 +352,24 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                             else nCards--;
 
                             game.setManualHand(!game.isManualHand());
-                            flipAllBack();
-                            playRound();
+
+                            if(nCards != 1){
+                                flipAllBack();
+                                playRound();
+                            }
+                            else {
+                                playMirrorRound();
+
+                            }
 
                         }
                         else{
-                            if(manualPlayer.isAlive()){
-                                ((TextView)findViewById(R.id.textResults)).setText(manualPlayer.getLifes() +" is the WINNER!!!!");
-
-                            }
-                            else if(autoPlayer.isAlive()){
-                                ((TextView)findViewById(R.id.textResults)).setText(autoPlayer.getLifes() +" is the WINNER!!!!");
-
-                            }
-                            else System.out.println("Oh no! Both players have died");
-
-                            changeToRes();
-
-                            System.out.println("---------- GAME FINISHED ----------");
-                            System.out.println("   -" + manualPlayer.getName() + " (manual): " + manualPlayer.getLifes() + " lifes.");
-                            System.out.println("   -" + autoPlayer.getName() + " (auto): " + autoPlayer.getLifes() + " lifes.");
-                            System.out.println("----------------------------------");
-                            if(manualPlayer.isAlive()) System.out.println(manualPlayer.getName() + " is the WINNER!!!!");
-                            else if(autoPlayer.isAlive()) System.out.println(autoPlayer.getName() + " is the WINNER!!!!");
-                            else System.out.println("Oh no! Both players have died"); //SEE IF WE COULD PLAY A MIRROR ROUND TO TIEBRAKE
-                            System.out.println("----------------------------------");
+                            endOfGame();
                         }
 
 
-                    }else{
+                    }
+                    else{
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             @Override
@@ -407,6 +399,28 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
             });
         }
+    }
+    private void endOfGame(){
+        if(manualPlayer.isAlive()){
+            ((TextView)findViewById(R.id.textResults)).setText(manualPlayer.getLifes() +" is the WINNER!!!!");
+
+        }
+        else if(autoPlayer.isAlive()){
+            ((TextView)findViewById(R.id.textResults)).setText(autoPlayer.getLifes() +" is the WINNER!!!!");
+
+        }
+        else System.out.println("Oh no! Both players have died");
+
+        changeToRes();
+
+        System.out.println("---------- GAME FINISHED ----------");
+        System.out.println("   -" + manualPlayer.getName() + " (manual): " + manualPlayer.getLifes() + " lifes.");
+        System.out.println("   -" + autoPlayer.getName() + " (auto): " + autoPlayer.getLifes() + " lifes.");
+        System.out.println("----------------------------------");
+        if(manualPlayer.isAlive()) System.out.println(manualPlayer.getName() + " is the WINNER!!!!");
+        else if(autoPlayer.isAlive()) System.out.println(autoPlayer.getName() + " is the WINNER!!!!");
+        else System.out.println("Oh no! Both players have died"); //SEE IF WE COULD PLAY A MIRROR ROUND TO TIEBRAKE
+        System.out.println("----------------------------------");
     }
     private void autoPlayerThrows(Card autoCard){
         System.out.println("HOLAAAAAAAAAAAAA!!!!!!!");
@@ -451,7 +465,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
         }
         ((TextView)findViewById(R.id.bidAuto)).setText("AutoPlayer bid: "+ autoBid);
-        ((TextView)findViewById(R.id.bidManual)).setText("AutoPlayer bid: "+ manualBid);
+        ((TextView)findViewById(R.id.bidManual)).setText("ManualPlayer bid: "+ manualBid);
         changeToGame();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -507,7 +521,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         //GET BIDS
 
         if(!game.isManualHand()){
-
+            findViewById(R.id.autoplayerBid).setVisibility(View.INVISIBLE);
             changeToBid();
             bid.setOnScrollListener((view, scrollState) -> {
                 int bid_v = bid.getValue();
@@ -522,6 +536,8 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
         }else{
             autoBid = autoPlayer.getBid(-1, 1);
+            findViewById(R.id.autoplayerBid).setVisibility(View.VISIBLE);
+            ((TextView)findViewById(R.id.autoplayerBid)).setText("AutoPlayer bid: "+autoBid);
             if(autoBid == nCards) button_ok.setClickable(false);
             changeToBid();
             bid.setOnScrollListener(new NumberPicker.OnScrollListener() {
@@ -556,26 +572,118 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         mazo.shuffle();
         Card manualCard = mazo.getNcards(1).getFirst();
         Card autoCard = mazo.getNcards(1).getFirst();
-        System.out.println("[GAME] Mirror Round cards: manual=" + manualCard + " auto=" + autoCard);
 
+        //System.out.println("[GAME] Mirror Round cards: manual=" + manualCard + " auto=" + autoCard);
+        updateMirrorLayout(autoCard);
         //Get mirror bid
         //In this case, as the addition of both bids cannot be 1, the player who is not hand has no decision
         if(game.isManualHand()){
-            int manualBid = manualPlayer.getMirrorBid(autoCard);
-            System.out.println("[GAME-MirrorRound] Both bid " + manualBid);
-            boolean ganaManual = (manualCard.getValue() >= autoCard.getValue());
-            if(manualBid==1 && ganaManual) autoPlayer.updateLifes(1); //pierde auto
-            else manualPlayer.updateLifes(1); //pierde manual
-            game.setManualHand(false);
-            return;
+            changeToMirror();
+            Button win = (Button) findViewById(R.id.win);
+            Button lose = (Button) findViewById(R.id.lose);
+            win.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int manualBid = 1;
+                    boolean ganaManual = (manualCard.getValue() >= autoCard.getValue());
+                    if(manualBid==1 && ganaManual) autoPlayer.updateLifes(1); //pierde auto
+                    else manualPlayer.updateLifes(1); //pierde manual
+                    game.setManualHand(false);
+                    if(autoPlayer.isAlive() && manualPlayer.isAlive()) {
+                        game.setManualHand(!game.isManualHand());
+                        updateBazasView();
+                        updateLivesView();
+                        nCards = 5;
+                        restartCards();
+                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                        findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+                        playRound();
+                    }else{
+                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                        findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+                        endOfGame();
+                    }
+                }
+            });
+            lose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int manualBid = 0;
+                    boolean ganaManual = (manualCard.getValue() >= autoCard.getValue());
+                    if(manualBid==1 && ganaManual) autoPlayer.updateLifes(1); //pierde auto
+                    else manualPlayer.updateLifes(1); //pierde manual
+                    game.setManualHand(false);
+                    if(autoPlayer.isAlive() && manualPlayer.isAlive()) {
+                        game.setManualHand(!game.isManualHand());
+                        updateBazasView();
+                        updateLivesView();
+                        nCards = 5;
+                        restartCards();
+                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                        findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+                        playRound();
+                    }else{
+                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                        findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+                        endOfGame();
+                    }
+                }
+            });
+
+
+
         }else{
             int autoBid = autoPlayer.getMirrorBid(manualCard);
             System.out.println("[GAME-MirrorRound] Both bid " + autoBid);
             boolean ganaAuto = (autoCard.getValue() >= manualCard.getValue());
             if(autoBid==1 && ganaAuto) manualPlayer.updateLifes(1);
             else autoPlayer.updateLifes(1);
+            if(autoPlayer.isAlive() && manualPlayer.isAlive()) {
+                nCards = 5;
+                game.setManualHand(!game.isManualHand());
+                updateBazasView();
+                updateLivesView();
+                restartCards();
+                findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+                playRound();
+            }else{
+                findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+                endOfGame();
+            }
         }
     }
 
+    private void restartCards(){
+        int resource;
+        int arraysize = imagearray_b.size();
+        for(int i =0; i < arraysize; i++){
+            imagearray_b.removeLast().clearColorFilter();
+        }
+        for (int i = 0; i < nCards; i++) {
+            resource = getResources().getIdentifier("card" + (i + 1), "id", getPackageName());
+            findViewById(resource).setVisibility(View.VISIBLE);
+            resource = getResources().getIdentifier("backcard"+(i + 1), "id", getPackageName());
+            findViewById(resource).setAlpha(0);
+            resource = getResources().getIdentifier("frontcard"+(i + 1), "id", getPackageName());
+            findViewById(resource).setAlpha(1);
 
+        }
+        for (int i = 0; i < nCards; i++) {
+            resource = getResources().getIdentifier("card" + (i + 6), "id", getPackageName());
+            findViewById(resource).setVisibility(View.VISIBLE);
+            resource = getResources().getIdentifier("backcard"+(i + 6), "id", getPackageName());
+            findViewById(resource).setAlpha(0);
+            resource = getResources().getIdentifier("frontcard"+(i + 6), "id", getPackageName());
+            findViewById(resource).setAlpha(1);
+        }
+        cardsOnTable = nCards;
+        for (int i = 0; i<nCards; i++){
+            resource = getResources().getIdentifier("bcard" + (i + 1), "id", getPackageName());
+            findViewById(resource).setVisibility(View.VISIBLE);
+        }
+        imagearray_f = new LinkedList<>();
+        imagearray_b = new LinkedList<>();
+    }
 }

@@ -88,7 +88,7 @@ public class AutoPlayer extends Player{
         String state = "";
         int numCards = 0;
 
-        for (int ones = 0; ones <= 4; ones++) {
+        /*for (int ones = 0; ones <= 4; ones++) {
             for (int twos = 0; twos <= 4; twos++) {
                 for (int threes = 0; threes <=  4; threes++) {
                     for (int fours = 0; fours <= 4; fours++) {
@@ -166,7 +166,7 @@ public class AutoPlayer extends Player{
                                                                 }
 
                                                             } */
-                                                            if (numCards == 5 && numBids >= 0) {
+                                                            /*if (numCards == 5 && numBids >= 0) {
                                                                 juegoIA5.put(state, initializationCards);
                                                             } else if (numCards == 4 && numBids >= -1) {
                                                                 juegoIA4.put(state, initializationCards);
@@ -189,7 +189,7 @@ public class AutoPlayer extends Player{
                     }
                 }
             }
-        }
+        }*/
         System.out.println("Mapa 5 " + juegoIA5.size());
         System.out.println("Mapa 4 " + juegoIA4.size());
         System.out.println("Mapa 3 " + juegoIA3.size());

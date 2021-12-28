@@ -185,4 +185,14 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/autoplayerBid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="468dp"
+        android:layout_marginEnd="288dp"
+        android:text="AutoPlayer bid: 0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

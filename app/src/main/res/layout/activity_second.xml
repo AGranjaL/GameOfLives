@@ -6,4 +6,6 @@
     <include android:id="@+id/gamelayout" layout="@layout/game_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"></include>
     <include android:id="@+id/bidlayout" layout="@layout/bid_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"></include>
     <include android:id="@+id/reslayout" layout="@layout/results_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"></include>
+    <include android:id="@+id/mirrorlayout" layout="@layout/mirror_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"></include>
+
 </FrameLayout>
