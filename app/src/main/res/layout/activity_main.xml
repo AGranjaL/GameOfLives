@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgrounds"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
     <Button
@@ -21,7 +22,7 @@
         tools:visibility="visible" />
 
     <Button
-        android:id="@+id/button_instructions"
+        android:id="@+id/button_instruction"
         android:layout_width="155dp"
         android:layout_height="54dp"
         android:text="@string/instructions"

@@ -24,6 +24,7 @@ import java.util.Map.Entry;
 public class AutoPlayer extends Player{
 
     private double learning_rate_win = 0.1;
+    private double learning_rate_win_bids = 0.3;
     private double ponderacion = 0.9;
 
     private HashMap<String, Double[]> pujasIA5 = new HashMap<>();       // cambiar el double por una lista de 6 valores, más fácil de acceder
@@ -659,7 +660,7 @@ public class AutoPlayer extends Player{
 
             for (int i = 0; i < aux_rewards.length; i++){
                 if (bid_aux == i){
-                    aux_rewards[i] = aux_rewards[i] + aux_rewards[i]*learning_rate_win*ponderacion;
+                    aux_rewards[i] = aux_rewards[i] + aux_rewards[i]*learning_rate_win_bids*ponderacion;
                     sum = sum + aux_rewards[i];
                 } else {
                     sum = sum + aux_rewards[i];

@@ -29,7 +29,6 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button button, button_ok;
     private int INIT_LIFES = 5;
-    private final Semaphore go = new Semaphore(0, true);
     private LinkedList<ImageView> imagearray_b = new LinkedList<>();
     private LinkedList<ImageView> imagearray_f = new LinkedList<>();
     private LinkedList<AnimatorSet> anim_back = new LinkedList<>();
@@ -419,11 +418,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         System.out.println("----------------------------------");
         if(manualPlayer.isAlive()) System.out.println(manualPlayer.getName() + " is the WINNER!!!!");
         else if(autoPlayer.isAlive()) System.out.println(autoPlayer.getName() + " is the WINNER!!!!");
-        else System.out.println("Oh no! Both players have died"); //SEE IF WE COULD PLAY A MIRROR ROUND TO TIEBRAKE
+        else System.out.println("Oh no! Both players have died"); //SEE IF WE COULD PLAY A MIRROR ROUND TO TIEBREAK
         System.out.println("----------------------------------");
     }
     private void autoPlayerThrows(Card autoCard){
-        System.out.println("HOLAAAAAAAAAAAAA!!!!!!!");
+
         for (int j = 0; j < cardsOnTable; j++){
             if (translateCard(autoCard).equals(imagearray_b.get(j+cardsOnTable).getTag())){
                 System.out.println("[AUTO] Card found " + translateCard(autoCard));

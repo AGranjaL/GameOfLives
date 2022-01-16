@@ -11,6 +11,8 @@
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.1" />
         <entry key="app/src/main/res/layout/bid_layout.xml" value="0.18" />
         <entry key="app/src/main/res/layout/game_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/instructions_layout.xml" value="0.21416083916083917" />
+        <entry key="app/src/main/res/layout/intro.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mirror_layout.xml" value="0.14" />
         <entry key="app/src/main/res/layout/resoult_activity.xml" value="0.10572916666666667" />
         <entry key="app/src/main/res/layout/results_layout.xml" value="0.12135416666666667" />
