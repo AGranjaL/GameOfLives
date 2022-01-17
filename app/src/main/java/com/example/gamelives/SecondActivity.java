@@ -490,6 +490,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     }
     public void start(){
         //Start a game
+        button.setVisibility(View.INVISIBLE);
         game = new Game(getApplicationContext());
         manualPlayer = game.getManualPlayer();
         autoPlayer = game.getAutoPlayer();
