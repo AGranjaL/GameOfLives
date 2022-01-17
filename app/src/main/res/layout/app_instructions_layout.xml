@@ -25,7 +25,7 @@
                 android:id="@+id/start_game"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
@@ -42,7 +42,7 @@
                 android:id="@+id/instructions_start"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:text="@string/start_ins"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -57,7 +57,7 @@
                 android:id="@+id/ready"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:text="@string/ready"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -71,8 +71,8 @@
                 android:id="@+id/bid_ins"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
-                android:text="@string/ready"
+                android:layout_margin="18dp"
+                android:text="@string/bid"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -85,7 +85,7 @@
                 android:id="@+id/game2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:text="@string/game_layout"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -95,6 +95,20 @@
                 android:layout_width="400dp"
                 android:layout_height="220dp"
                 android:src="@drawable/game2" />
+            <TextView
+                android:id="@+id/mirror"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="18dp"
+                android:text="@string/mirror"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:typeface="sans" />
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="220dp"
+                android:src="@drawable/mirror" />
 
 
 

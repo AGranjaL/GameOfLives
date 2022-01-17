@@ -25,7 +25,7 @@
                 android:id="@+id/overview_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
@@ -53,7 +53,7 @@
                 android:id="@+id/objective_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
@@ -70,10 +70,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="18sp"
+                android:layout_margin="18dp"
                 android:typeface= "sans"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:layout_margin="16dp"
                 android:text="@string/objective"
                 />
             <TextView
@@ -81,7 +81,7 @@
                 android:id="@+id/game_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
@@ -101,7 +101,7 @@
                 android:typeface= "sans"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:text="@string/game"
                 />
             <TextView
@@ -109,7 +109,7 @@
                 android:id="@+id/value_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
@@ -129,7 +129,7 @@
                 android:typeface= "sans"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:text="@string/value"
                 />
             <TextView
@@ -137,7 +137,7 @@
                 android:id="@+id/lives_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
@@ -157,7 +157,7 @@
                 android:typeface= "sans"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:text="@string/lives"
                 />
 

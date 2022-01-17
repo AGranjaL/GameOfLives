@@ -597,12 +597,12 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                     boolean ganaManual = (manualCard.getValue() >= autoCard.getValue());
                     if(manualBid==1 && ganaManual) {
                         autoPlayer.updateLifes(1); //pierde auto
-                        win_lose.setText("AutoPlayer lost 1 life!");
+                        win_lose.setText("You had a "+manualCard.getValue()+" - AutoPlayer lost 1 life! ");
                         win_lose.setVisibility(View.VISIBLE);
                     }
                     else {
                         manualPlayer.updateLifes(1); //pierde manual
-                        win_lose.setText("ManualPlayer lost one life!");
+                        win_lose.setText("You had a "+manualCard.getValue()+" - ManualPlayer lost 1 life!");
                         win_lose.setVisibility(View.VISIBLE);
                     }
                     game.setManualHand(false);
@@ -622,7 +622,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                                 playRound();
 
                             }
-                        }, 3000);
+                        }, 5000);
 
                     }else{
                         Handler handler = new Handler();
@@ -633,7 +633,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                                 findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
                                 endOfGame();
                             }
-                        }, 3000);
+                        }, 5000);
 
                     }
                 }
@@ -645,12 +645,12 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                     boolean ganaManual = (manualCard.getValue() >= autoCard.getValue());
                     if(manualBid==1 && ganaManual) {
                         autoPlayer.updateLifes(1); //pierde auto
-                        win_lose.setText("AutoPlayer lost 1 life!");
+                        win_lose.setText("You had a "+manualCard.getValue()+" - AutoPlayer lost 1 life!");
                         win_lose.setVisibility(View.VISIBLE);
                     }
                     else {
                         manualPlayer.updateLifes(1); //pierde manual
-                        win_lose.setText("ManualPlayer lost one life!");
+                        win_lose.setText("You had a "+manualCard.getValue()+" - ManualPlayer lost 1 life!");
                         win_lose.setVisibility(View.VISIBLE);
 
                     }

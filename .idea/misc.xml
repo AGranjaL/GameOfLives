@@ -12,7 +12,7 @@
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.14375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/app_instructions_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/app_instructions_layout.xml" value="0.15" />
         <entry key="app/src/main/res/layout/bid_layout.xml" value="0.18" />
         <entry key="app/src/main/res/layout/game_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/instructions_layout.xml" value="0.1" />
