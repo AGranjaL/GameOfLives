@@ -588,13 +588,23 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             changeToMirror();
             Button win = (Button) findViewById(R.id.win);
             Button lose = (Button) findViewById(R.id.lose);
+            TextView win_lose = findViewById(R.id.win_lose);
+            win_lose.setVisibility(View.INVISIBLE);
             win.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int manualBid = 1;
                     boolean ganaManual = (manualCard.getValue() >= autoCard.getValue());
-                    if(manualBid==1 && ganaManual) autoPlayer.updateLifes(1); //pierde auto
-                    else manualPlayer.updateLifes(1); //pierde manual
+                    if(manualBid==1 && ganaManual) {
+                        autoPlayer.updateLifes(1); //pierde auto
+                        win_lose.setText("AutoPlayer lost 1 life!");
+                        win_lose.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        manualPlayer.updateLifes(1); //pierde manual
+                        win_lose.setText("ManualPlayer lost one life!");
+                        win_lose.setVisibility(View.VISIBLE);
+                    }
                     game.setManualHand(false);
                     if(autoPlayer.isAlive() && manualPlayer.isAlive()) {
                         game.setManualHand(!game.isManualHand());
@@ -602,13 +612,29 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         updateLivesView();
                         nCards = 5;
                         restartCards();
-                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
-                        findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
-                        playRound();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                                findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+
+                                playRound();
+
+                            }
+                        }, 3000);
+
                     }else{
-                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
-                        findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
-                        endOfGame();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                                findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+                                endOfGame();
+                            }
+                        }, 3000);
+
                     }
                 }
             });
@@ -617,22 +643,46 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                 public void onClick(View view) {
                     int manualBid = 0;
                     boolean ganaManual = (manualCard.getValue() >= autoCard.getValue());
-                    if(manualBid==1 && ganaManual) autoPlayer.updateLifes(1); //pierde auto
-                    else manualPlayer.updateLifes(1); //pierde manual
+                    if(manualBid==1 && ganaManual) {
+                        autoPlayer.updateLifes(1); //pierde auto
+                        win_lose.setText("AutoPlayer lost 1 life!");
+                        win_lose.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        manualPlayer.updateLifes(1); //pierde manual
+                        win_lose.setText("ManualPlayer lost one life!");
+                        win_lose.setVisibility(View.VISIBLE);
+
+                    }
                     game.setManualHand(false);
+
                     if(autoPlayer.isAlive() && manualPlayer.isAlive()) {
                         game.setManualHand(!game.isManualHand());
                         updateBazasView();
                         updateLivesView();
                         nCards = 5;
                         restartCards();
-                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
-                        findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
-                        playRound();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                                findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+
+                                playRound();
+
+                            }
+                        }, 3000);
                     }else{
-                        findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
-                        findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
-                        endOfGame();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                findViewById(R.id.gamelayout).setVisibility(View.VISIBLE);
+                                findViewById(R.id.mirrorlayout).setVisibility(View.INVISIBLE);
+                                endOfGame();
+                            }
+                        }, 3000);
                     }
                 }
             });
