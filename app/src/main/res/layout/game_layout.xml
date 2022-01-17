@@ -311,6 +311,25 @@
         android:layout_below="@id/lay_cards"
         android:layout_marginTop="24dp">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="62dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="144dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/chip"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:layout_width="62dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="144dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/chip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/deal_b"
             android:layout_width="wrap_content"
@@ -324,11 +343,15 @@
             android:id="@+id/bidAuto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="AutoPlayer bid: 0"
+            android:text="AutoPlayer bid:     0"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="sans"
             app:layout_constraintBottom_toTopOf="@+id/bidManual"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -336,11 +359,15 @@
             android:id="@+id/bidManual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="21dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="ManualPlayer bid: 0"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="sans"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

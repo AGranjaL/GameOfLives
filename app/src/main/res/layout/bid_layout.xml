@@ -7,12 +7,21 @@
     android:background="@drawable/backgrounds"
     android:visibility="invisible">
 
+    <ImageView
+        android:layout_width="171dp"
+        android:layout_height="233dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/chip"
+        app:layout_constraintBottom_toTopOf="@+id/lay_cards_b"
+        app:layout_constraintEnd_toEndOf="parent"></ImageView>
+
     <NumberPicker
         android:id="@+id/bid"
         android:layout_width="95dp"
         android:layout_height="189dp"
-        android:layout_marginEnd="158dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="52dp"
         android:baselineAligned="false"
         app:layout_constraintBottom_toTopOf="@+id/button_ok_bid"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -21,31 +30,42 @@
         android:id="@+id/questionbid"
         android:layout_width="233dp"
         android:layout_height="95dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="112dp"
+        android:fontFamily="sans-serif-black"
+        android:shadowColor="#808080"
+        android:shadowDx="5"
+        android:shadowDy="7"
+        android:shadowRadius="6"
         android:text="How much do you want to bet?"
-        android:textSize="26sp"
-        android:textStyle="bold|italic"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_ok_bid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="296dp"
+        android:layout_width="106dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="428dp"
         android:text="OK"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/lay_cards_b"
         android:layout_width="match_parent"
-        android:layout_height="209dp"
+        android:layout_height="190dp"
         android:layout_alignParentBottom="false"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/bcard1"
@@ -189,9 +209,18 @@
         android:id="@+id/autoplayerBid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="468dp"
-        android:layout_marginEnd="288dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="136dp"
+        android:fontFamily="sans-serif-black"
+        android:shadowColor="#808080"
+        android:shadowDx="5"
+        android:shadowDy="7"
+        android:shadowRadius="6"
         android:text="AutoPlayer bid: 0"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

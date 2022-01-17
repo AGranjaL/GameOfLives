@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/backgrounds"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="invisible">
+
+    <ScrollView
+        android:layout_width="412dp"
+        android:layout_height="638dp"
+        android:scrollbars="vertical"
+        tools:layout_editor_absoluteX="-1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/start_game"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:textSize="28sp"
+                android:typeface= "sans"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="7"
+                android:shadowRadius="6"
+                android:text="@string/start"
+                />
+
+            <TextView
+                android:id="@+id/instructions_start"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:text="@string/start_ins"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:typeface="sans" />
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="220dp"
+                android:src="@drawable/main" />
+
+            <TextView
+                android:id="@+id/ready"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:text="@string/ready"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:typeface="sans" />
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="220dp"
+                android:src="@drawable/game" />
+            <TextView
+                android:id="@+id/bid_ins"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:text="@string/ready"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:typeface="sans" />
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="220dp"
+                android:src="@drawable/bid" />
+            <TextView
+                android:id="@+id/game2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:text="@string/game_layout"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:typeface="sans" />
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="220dp"
+                android:src="@drawable/game2" />
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_to_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/round_button"
+            app:icon="@drawable/ic_action_name"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="474dp" />
+
+        <Button
+            android:id="@+id/button_to_end"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="250dp"
+            android:background="@drawable/round_button"
+            app:icon="@drawable/ic_action_next" />
+    </LinearLayout>
+</LinearLayout>

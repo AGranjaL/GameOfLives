@@ -27,7 +27,7 @@ import java.util.concurrent.Semaphore;
 public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private Button button, button_ok;
+    private Button button, button_ok, button_end;
     private int INIT_LIFES = 5;
     private LinkedList<ImageView> imagearray_b = new LinkedList<>();
     private LinkedList<ImageView> imagearray_f = new LinkedList<>();
@@ -53,6 +53,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         button  = (Button) findViewById(R.id.deal_b);
         bid = (NumberPicker) findViewById(R.id.bid);
         button_ok = findViewById(R.id.button_ok_bid);
+        button_end = findViewById(R.id.button_end);
         //manualPlayer = new ManualPlayer("ManualPlayer");
 
 
@@ -70,6 +71,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
         button.setOnClickListener(this::onClick);
         button_ok.setOnClickListener(this::onClick);
+        button_end.setOnClickListener(this::onClick);
 
 
     }
@@ -450,6 +452,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.button_ok_bid:
                 click_ok_button();
+                break;
+            case R.id.button_end:
+                Intent main_act = new Intent(SecondActivity.this, MainActivity.class);
+                startActivity(main_act);
+                setContentView(R.layout.intro);
                 break;
         }
 

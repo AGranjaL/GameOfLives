@@ -37,4 +37,10 @@ and the total number of tricks won, until they lose all their lives. \n
 There are no kind of reward with lives. Players won’t add up lives in any of the rounds neither by winning the bet nor by staying
 alive for a number of rounds.
     </string>
+    <string name="start">Start a game</string>
+    <string name="start_ins">To start a new game press the "New Game" button on the main screen</string>
+    <string name="ready">When you are ready to start the game press the "Deal" button.</string>
+    <string name="bid">At the beginning of each round you will have to place your bid. If the opponent has already bet
+    it will appear at the bottom of the screen. You can check your cards at the bottom to make a right choice.</string>
+    <string name="game_layout">To throw a card click on the one you want to throw (cards on the bottom). You will know if the opponent has thrown if one of the cards on the top is colored yellow.</string>
 </resources>

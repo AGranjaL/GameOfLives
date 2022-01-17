@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:visibility="visible">
+    android:visibility="invisible">
 
     <ScrollView
         android:layout_width="412dp"
@@ -29,6 +29,7 @@
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:fontFamily="sans-serif-black"
                 android:shadowColor="#808080"
                 android:shadowDx="5"
@@ -40,10 +41,11 @@
                 android:id="@+id/instructions_overview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
+                android:layout_margin="18dp"
                 android:textSize="18sp"
                 android:typeface= "sans"
-                android:textStyle="normal"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:text="@string/overview"
                 />
             <TextView
@@ -55,6 +57,7 @@
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:fontFamily="sans-serif-black"
                 android:shadowColor="#808080"
                 android:shadowDx="5"
@@ -68,6 +71,8 @@
                 android:layout_height="match_parent"
                 android:textSize="18sp"
                 android:typeface= "sans"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:layout_margin="16dp"
                 android:text="@string/objective"
                 />
@@ -80,6 +85,7 @@
                 android:textSize="28sp"
                 android:typeface= "sans"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:fontFamily="sans-serif-black"
                 android:shadowColor="#808080"
                 android:shadowDx="5"
@@ -93,8 +99,27 @@
                 android:layout_height="match_parent"
                 android:textSize="18sp"
                 android:typeface= "sans"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:layout_margin="16dp"
                 android:text="@string/game"
+                />
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/value_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:textSize="28sp"
+                android:typeface= "sans"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="7"
+                android:shadowRadius="6"
+                android:text="@string/value_title"
                 />
             <TextView
                 android:id="@+id/instructions_value"
@@ -102,8 +127,27 @@
                 android:layout_height="match_parent"
                 android:textSize="18sp"
                 android:typeface= "sans"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:layout_margin="16dp"
                 android:text="@string/value"
+                />
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/lives_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:textSize="28sp"
+                android:typeface= "sans"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"
+                android:shadowColor="#808080"
+                android:shadowDx="5"
+                android:shadowDy="7"
+                android:shadowRadius="6"
+                android:text="@string/lives_title"
                 />
             <TextView
                 android:id="@+id/instructions_lives"
@@ -111,22 +155,37 @@
                 android:layout_height="match_parent"
                 android:textSize="18sp"
                 android:typeface= "sans"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:layout_margin="16dp"
                 android:text="@string/lives"
                 />
-            <ImageView
-                android:layout_width="400dp"
-                android:layout_height="220dp"
-                android:src="@drawable/main" />
+
+
         </LinearLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/button_to_main"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="474dp" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
+        <Button
+
+            android:id="@+id/button_to_main"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/round_button"
+            app:icon="@drawable/ic_action_name"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="474dp" />
+
+        <Button
+            android:id="@+id/button_to_next"
+            android:layout_width="50dp"
+            android:layout_marginStart="250dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_button"
+            app:icon="@drawable/ic_action_next" />
+    </LinearLayout>
 </LinearLayout>
